@@ -35,3 +35,5 @@ Binary Search 활용
 1. findPath) while문으로 반복해주고, loop를 종료시킬 조건문(분수를 찾았을 경우)을 넣는다.   
 1. findPath) 찾을 분수와 현재 분수의 크기를 비교하여 if else문으로 path를 찾고, 범위와 현재 분수를 수정한다.  
 
+* 소요시간  
+약 90분
