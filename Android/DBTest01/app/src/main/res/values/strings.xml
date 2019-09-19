@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DBTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_insert_contact">InsertContactActivity</string>
+    <string name="title_activity_search_contact">SearchContactActivity</string>
+    <string name="title_activity_all_contacts">AllContactsActivity</string>
+
+</resources>
