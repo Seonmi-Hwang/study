@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Download HTML Basic</string>
+    <string name="init_address">https://www.google.com</string>
+    <string name="image_url">https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</string>
+
+</resources>
