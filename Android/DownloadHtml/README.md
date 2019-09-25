@@ -19,20 +19,20 @@ private String downloadUrl(URL url) throws IOException {
   
   try { 
     conn = (HttpsURLConnection)url.openConnection(); // 서버 연결 설정 – MalformedURLException 
-    conn.setReadTimeout(5000);// 읽기타임아웃지정 - SocketTimeoutException 
-    conn.setConnectTimeout(5000);// 연결타임아웃지정 - SocketTimeoutException 
-    conn.setRequestMethod("GET");// 연결방식지정 
-    conn.setDoInput(true);// 서버응답지정 – default
+    conn.setReadTimeout(5000);// 읽기 타임아웃 지정 - SocketTimeoutException 
+    conn.setConnectTimeout(5000);// 연결 타임아웃 지정 - SocketTimeoutException 
+    conn.setRequestMethod("GET");// 연결 방식 지정 
+    conn.setDoInput(true);// 서버 응답 지정 – default
     
     int responseCode = conn.getResponseCode(); // 서버 전송 및 응답결과 수신 
     if(responseCode !=HttpsURLConnection.HTTP_OK) { 
       throw new IOException("HTTP error code: "+responseCode); 
   }
-    stream = conn.getInputStream();// 응답결과스트림확인
+    stream = conn.getInputStream();// 응답 결과 스트림 확인
     if (stream != null) { 
-      result = readStream(stream,500); // 응답결과스트림을문자열로변환–readStream구현필요 
+      result = readStream(stream,500); // 응답 결과 스트림을 문자열로 변환  –readStream 구현 필요 
     } 
-  } finally { // 스트림및연결종료 
+  } finally { // 스트림 및 연결 종료 
      if (stream != null) { 
         stream.close(); 
      } 
