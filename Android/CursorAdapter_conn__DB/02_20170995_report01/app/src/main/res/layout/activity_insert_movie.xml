@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".InsertMovieActivity">
+
+    <TextView
+        android:id="@+id/addMovInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:text="✒ 영화추가"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="112dp"
+        android:layout_below="@+id/addMovInfo"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="147dp"
+        android:layout_marginLeft="147dp"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        tools:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addMovInfo"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="150dp"
+        android:text="제목" />
+
+    <EditText
+        android:id="@+id/addTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignStart="@+id/title"
+        android:layout_alignLeft="@+id/title"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTitle"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        android:text="장르" />
+
+    <EditText
+        android:id="@+id/addGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genre"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/hero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addGenre"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="8dp"
+        android:text="주인공" />
+
+    <EditText
+        android:id="@+id/addHero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hero"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addHero"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="8dp"
+        android:text="감독" />
+
+    <EditText
+        android:id="@+id/addDirector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/director"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addDirector"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="2dp"
+        android:text="평점" />
+
+    <EditText
+        android:id="@+id/addRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rating"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/premiere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addRating"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:text="개봉일" />
+
+    <EditText
+        android:id="@+id/addPremiere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/premiere"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPremiere"
+        android:layout_alignEnd="@+id/addTitle"
+        android:layout_alignRight="@+id/addTitle"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="onClick"
+        android:text="취소" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPremiere"
+        android:layout_alignStart="@+id/addMovInfo"
+        android:layout_alignLeft="@+id/addMovInfo"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="2dp"
+        android:onClick="onClick"
+        android:text="추가" />
+
+</RelativeLayout>
