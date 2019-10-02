@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MultipleAsyncTaskTest</string>
+    <string name="default_link">http://cooling.dongduk.ac.kr:8080/downloads/cat.htm</string>
+</resources>
