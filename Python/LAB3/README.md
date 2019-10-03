@@ -7,7 +7,7 @@ String, List & Tuple
 파이썬은 문자열을 기본 타입으로 지원 \-> 문자열 조작을 위한 다양한 명령 제공  
 문자열을 구성하는 개별문자를 읽을 때는 [] 괄호와 문자의 위치인 첨자를 이용   
 **첨자는 앞에서 셀 수도 있고 뒤에서 셀 수도 있음**  
-문자열은 문자로 구성된 리스트**(but, immutable)**의 일종이기 때문에 for문으로 순회 가능  
+문자열은 문자로 구성된 리스트 **(but, immutable)** 의 일종이기 때문에 for문으로 순회 가능  
 *(List는 원래 mutable 이다.)*  
 
 ![image](https://user-images.githubusercontent.com/50273050/66102889-d4ff7780-e5ee-11e9-93c1-f3bf09b2b5a0.png)  
