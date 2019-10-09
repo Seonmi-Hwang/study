@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AsyncTaskDownHtml</string>
+    <string name="server_url">http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=e67d9c6f2a38b88f466a71f2df8acdc6&amp;targetDt=</string>
+</resources>
