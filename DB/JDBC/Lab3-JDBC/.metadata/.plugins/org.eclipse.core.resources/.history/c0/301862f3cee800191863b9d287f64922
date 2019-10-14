@@ -1,0 +1,75 @@
+package lab3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Lab3 {
+
+	public Lab3() {	// 생성자 
+		// JDBC 드라이버 로딩 및 등록
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");	
+		} catch (ClassNotFoundException ex) {
+			ex.printStackTrace();
+		}	
+	}
+	
+	private static Connection getConnection() {
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+					// "jdbc:oracle:thin:@202.20.119.117:1521:orcl";			
+		String user = "scott";
+		String passwd = "TIGER";
+
+		// DBMS와의 연결 획득
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, user, passwd);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	 
+		return conn;
+	}
+	
+	public static void printEmployeesInDept(String deptName) {
+		
+	}
+	
+	public static void printDeptInfo(String deptName) {
+	
+	}
+	
+	public static void replaceManagerOfDept(String deptName, int managerNo, double comm) {
+	
+	}
+	
+	public static void printEmpInfo(int empNo) {
+		
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("부서명을 입력하시오: ");
+		String deptName = scanner.next();
+		
+		// printDeptInfo 메소드 호출
+		
+		// printEmployeesInDept 메소드 호출
+
+		System.out.print("새 관리자 사번과 관리자 수당을 입력하시오: ");
+		int managerNo  = scanner.nextInt();
+		double commission = scanner.nextDouble();
+	
+		// 관리자 사번(int)과 관리자 수당(double)을 입력받음
+		
+		// replaceManagerOfDept 메소드 호출 
+
+		System.out.println("새 관리자 정보: ");
+
+		// printEmpInfo 메소드 호출		
+		
+		scanner.close();
+	}
+}
