@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Naver OpenAPI with File</string>
+    <string name="api_url">https://openapi.naver.com/v1/search/book.xml?display=50&amp;start=1&amp;query=</string>
+    <string name="client_id"></string>
+    <string name="client_secret"></string>
+</resources>
