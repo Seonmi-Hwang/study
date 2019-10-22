@@ -1,0 +1,72 @@
+<!-- 이게 있으면 maven 프로젝트 // maven의 핵심 기능 : 알아서 자동으로 라이브러리를 구해와 줌(PC .m2폴더 밑에 저장, 이클립스 Maven Dependencies 폴더안에 저장) --> 
+<!-- ojdbc6.jar는 오픈소스가 아니기 때문에 maven에서 구할 수 없음. 따로 구해서 넣어줘야 함 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+  	<groupId>kr.ac.dongduk.dbp</groupId>
+  	<artifactId>StudentServices</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+ 	<packaging>war</packaging>
+  	<name>Student Services</name>
+	<description>Example for DAO and DTO patterns</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<servlet-api.version>3.1.0</servlet-api.version>
+		<jsp.version>2.3.1</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		<logback-classic.version>1.1.2</logback-classic.version>
+		<commons-dbcp2.version>2.2.0</commons-dbcp2.version>		
+	</properties>
+	<dependencies>
+		<!-- Servlet & JSP API -->
+		<dependency> <!-- 제 3의 라이브러리 -->
+			<groupId>javax.servlet</groupId> <!-- 경로 -->
+			<artifactId>javax.servlet-api</artifactId> <!-- 패키지 이름 -->
+			<version>${servlet-api.version}</version> <!-- 버전 -->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${jsp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
+
+		<!-- DBCP2 --> <!-- 커넥션 관리 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons-dbcp2.version}</version>
+		</dependency>
+		
+	</dependencies>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
