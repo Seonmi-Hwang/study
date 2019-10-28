@@ -1,4 +1,4 @@
-// Update 19.10.26 by Seonmi-Hwang
+// Update 19.10.28 by Seonmi-Hwang
 import java.util.Scanner;
 
 public class handShaking_opt { // memoization 사용
@@ -7,9 +7,10 @@ public class handShaking_opt { // memoization 사용
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		int n = scan.nextInt();
-		long[] memo = new long[n];
+		int k = n / 2;
+		long[] memo = new long[k];
 		
-		for (int i = 0; i < n; i++)  // memo 초기화
+		for (int i = 0; i < k; i++)  // memo 초기화
 			memo[i] = 0;
 		
 		System.out.println(getHandShaking(n, memo));
