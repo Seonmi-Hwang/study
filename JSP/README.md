@@ -1,4 +1,8 @@
-# Servlet and JSP  
+# HTTP, Servlet & JSP  
+
+### ⬛️ HTTP  
+* **HTTP (HyperText Transfer Protocol)**  
+\- 웹 메시지 전송을 위한 응용 계층 프로토콜  
 
 ### ⬛️ GET & POST  
 * **GET**  
@@ -45,3 +49,36 @@
 \- **Expression Language(EL), JSP Standard Tag Library(JSTL)** 등 다양한 확장 기술 이용 가능  
 **\- MVC design pattern에서 _View_ 구현을 위해 사용됨**  
 
+* **JSP Request 처리 과정**  
+  ① 웹 브라우저에서 JSP 파일 요청 (HTTP request message)  
+  ② Web Server에서 Web Container에게 사용자 요구 처리 요청  
+  ③ Web Container에서 아래 일들이 이루어진다.  
+&nbsp;&nbsp;&nbsp;&nbsp;3-1. JSP 파일 parsing  
+&nbsp;&nbsp;&nbsp;&nbsp;3-2. Servlet으로 변환  
+&nbsp;&nbsp;&nbsp;&nbsp;3-3. class 파일 생성  
+&nbsp;&nbsp;&nbsp;&nbsp;3-4. 메모리에 적재 후 실행  
+  ④ Web Server에게 처리결과(HTML)를 돌려준다.  
+  ⑤ 처리 결과 전송 (HTTP response message)  
+  ⑥ 화면 출력  
+  
+### ⬛️ Script   
+* **Script : 선언부(Declaration)**   
+   JSP page 안에서 사용할 변수나 메소드를 선언하는 문장  
+    ▪ ``` <%! 변수 선언 또는 메소드 선언 %> ```  
+  \- JSP내의 메소드 선언은 가급적 피하고 별도의 Java class나 JavaBeans를 사용  
+  \- 선언부 내에서는 JSP 내장 객체(default object) 참조 불가  
+  
+* **Script : Scriptlet**  
+   JSP page 내에 Java code를 기술하는 부분  
+    ▪ ``` <% ..Java codes.. %> ```  
+  \- JSP page 작성 시 가장 많이 쓰임  
+  \- JSP page가 Servlet으로 변환될 때 _jspService() 메소드 안에 포함됨  
+	\-> 변수 선언 시 local 변수가 되므로 자동으로 초기화 X  
+  \- 복잡한 로직을 포함하는 scriptlet은 개발 및 유지보수 어려움  
+	=> 표현언어(EL), JSTL, Custom Tag, JavaBeans의 사용 권장  
+  
+* **Script : 표현식(Expression)**    
+   JSP code에서 생성한 값을 출력  
+    ▪ ``` <%= 변수명, 산술식, 또는 메소드 호출 %> ```  
+  \- JSP code 내의 변수 값 또는 메소드 호출 결과 값을 출력할 때 사용   
+  \- 세미콜론(;) 생략, out.print() 메소드 호출과 동일한 효과  
