@@ -1,14 +1,15 @@
 ## Web Application의 구조   
 ### ⬛️ Model1   
 * **JSP page에서** presentation logic, business logic, 입출력 데이터 처리, 실행 흐름제어 등을 **모두 구현**   
+
 **◼️ 단점**  
 * 복잡한 application의 경우 개발 및 유지보수의 어려움 발생  
 * 프로그램 개발자와 웹 디자이너 사이의 작업의 분리가 어려움  
 
 ### ⬛️ Model2 (MVC pattern / MVC architecture)  
-* Model : 입력 값 검증, business logic 수행 및 data 저장 관리(DB연동) 수행  
-* View : UI 및 presentation(사용자 요청 처리 결과에 대한 출력) logic 구현  
-* Controller : 사용자와 Model, View 사이의 실행 흐름 제어
+* **Model** : 입력 값 검증, business logic 수행 및 data 저장 관리(DB연동) 수행  
+* **View** : UI 및 presentation(사용자 요청 처리 결과에 대한 출력) logic 구현  
+* **Controller** : 사용자와 Model, View 사이의 실행 흐름 제어
  (사용자의 요청 수신, Model의 기능 선택 및 호출, View 선택 및 결과 전송 등)  
 
 #### ⬛️ 모델(Model)  
@@ -19,7 +20,7 @@ Database, file system, legacy system 등과의 연동 수행
 ![image](https://user-images.githubusercontent.com/50273050/68199048-9bac9400-0000-11ea-92bb-1321f3af87b6.png)  
 
 **◼️ Domain class**  
-* Value Object(VO), **Data Transfer Object(DTO)**를 정의  
+* Value Object(VO), **Data Transfer Object(DTO)** 를 정의  
 * Application에서 사용되는 **데이터의 표현 및 전달**을 위한 객체  
 * Database에 저장되는 객체는 database의 table과 유사한 구조를 가짐  
 * 속성에 대한 **getter & setter** methods 포함  
@@ -219,7 +220,7 @@ public class UserDAO {
 ```
 
 **◼️ Manager(Facade) class**  
-* JSP(Model1) 또는 Controller(Model2)에서 **모델에 접근하기 위해 사용하는 인터페이스(API)**를 제공하는 Facade class
+* JSP(Model1) 또는 Controller(Model2)에서 **모델에 접근하기 위해 사용하는 인터페이스(API)** 를 제공하는 Facade class
 외부에서 모델에 접근할 때 반드시 manager object를 이용하도록 함  
 * Manager object는 domain object를 통해 business object와 DAO에 데이터를 전달하며, business logic 및 데이터 처리 결과를 JSP 또는 Controller에 전달하는 역할을 수행  
 * **Manager class에서 간단한 business logic을 직접 구현 가능**  
@@ -313,11 +314,11 @@ public class UserManager {
 ```
 
 #### ⬛️ MVC 구조 \- request 처리 과정  
-1. 모든 사용자 요청은 먼저 Controller(Servlet)로 전달  
-1. Controller는 사용자 요청에 대한 처리를 Model에 위임(parameter 전달)  
-1. Model은 요청 처리를 완료한 후 Controller에게 결과를 반환함  
-1. Controller는 사용자에게 보여줄 View를 호출함(적절한 View 선택 & Model로부터 반환된 결과를 View에 전달)  
-1. View는 요청 처리 결과 화면을 생성하여 사용자에게 전송함(response)  
+1. 모든 사용자 요청은 먼저 **Controller(Servlet)** 로 전달  
+1. **Controller** 는 사용자 요청에 대한 처리를 **Model에 위임(parameter 전달)**  
+1. **Model** 은 요청 처리를 완료한 후 **Controller에게 결과를 반환함**  
+1. **Controller** 는 사용자에게 보여줄 **View를 호출함(적절한 View 선택 & Model로부터 반환된 결과를 View에 전달)**  
+1. **View** 는 요청 처리 결과 화면을 생성하여 **사용자에게 전송함(response)**  
 
 ![image](https://user-images.githubusercontent.com/50273050/68201273-cd275e80-0004-11ea-9358-b5337bd03535.png)  
 
@@ -416,10 +417,10 @@ public class RequestMapping {
 ```
 
 **◼️ Controller interface**   
-- 모든 Controller들이 구현해야 할 execute() method를 선언한 인터페이스    
-- 반환 문자열 : 사용자의 request를 처리한 후 이동할 view나 redirection 주소  
+- **모든 Controller들이 구현해야 할 execute() method를 선언한 인터페이스**    
+- **반환 문자열** : 사용자의 request를 처리한 후 이동할 view나 redirection 주소  
  "redirect:"로 시작할 경우 \-> redirection 지시  
-&nbsp;&nbsp;&nbsp;&nbsp; 그렇지 않으면 \-> view page(JSP)로 forwarding 수행 
+&nbsp;&nbsp;&nbsp; 그렇지 않으면 \-> view page(JSP)로 forwarding 수행 
 ```java
 package controller; 
 import javax.servlet.http.HttpServletRequest; 
@@ -431,7 +432,8 @@ public interface Controller {
 ```
 
 **◼️ ForwardController**   
-- 미리 정해진 URI로 forwarding을 실행하기 위한 controller (로그인 화면과 같이 정적인 from을 정의한 페이지로 바로 이동)     
+- 미리 정해진 URI로 forwarding을 실행하기 위한 controller  
+(로그인 화면과 같이 정적인 from을 정의한 페이지로 바로 이동)     
 ```java
 public class ForwardController implements Controller { 
 	private String forwardUrl;
@@ -452,16 +454,16 @@ public class ForwardController implements Controller {
 ![image](https://user-images.githubusercontent.com/50273050/68203897-3198ec80-000a-11ea-87a3-d30a4b0201b6.png)  
 
 ### ⬛️ Quiz
-Q1. Model1 구조와 Model2 구조의 장단점을 서술하시오.
+**Q1. Model1 구조와 Model2 구조의 장단점을 서술하시오.**
 
-Q2. MVC architecture의 세 가지 요소를 쓰고, 각각의 기능에 대해 설명하시오.
+**Q2. MVC architecture의 세 가지 요소를 쓰고, 각각의 기능에 대해 설명하시오.**
 
-Q3. 아래 설명에 맞는 클래스의 이름과 MVC의 세 가지 요소 중 어느 요소에 해당되는지 쓰시오. 
+**Q3. 아래 설명에 맞는 클래스의 이름과 MVC의 세 가지 요소 중 어느 요소에 해당되는지 쓰시오.** 
 1) 애플리케이션의 초기 진입점으로 클라이언트의 request를 받는 클래스
 2) 모델에 접근하기 위해 사용하는 인터페이스(API)를 제공하는 클래스
 3) 각 요청 uri에 대응되는 controller 객체를 찾아 반환하는 클래스
 
-Q4. url-pattern "/" 의 의미에 대해 서술하시오.
+**Q4. url-pattern "/" 의 의미에 대해 서술하시오.**
 
 <hr>
 
