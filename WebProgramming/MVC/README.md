@@ -453,6 +453,8 @@ public class ForwardController implements Controller {
 ![image](https://user-images.githubusercontent.com/50273050/68203856-1cbc5900-000a-11ea-8f03-bc4122155c6b.png)  
 ![image](https://user-images.githubusercontent.com/50273050/68203897-3198ec80-000a-11ea-87a3-d30a4b0201b6.png)  
 
+<hr>
+
 ### ⬛️ Quiz
 **Q1. Model1 구조와 Model2 구조의 장단점을 서술하시오.**
 
@@ -465,22 +467,21 @@ public class ForwardController implements Controller {
 
 **Q4. url-pattern "/" 의 의미에 대해 서술하시오.**
 
-<hr>
 
-A1.  
+**A1.**  
 Model1 구조는 대부분의 일을 JSP가 모두 처리해야 하지만, Model2(MVC) 구조는 작업들을 분리하여 개발 가능하도록 구성되어 있다. Model1 구조는 프로그램 개발자와 웹 디자이너 사이의 작업의 분리가 어려웠으나, MVC 구조는 분리하여 개발 가능하도록 했기 때문에 개발 및 유지보수의 효율성이 높다. 그러나 MVC구조는 Controller 부분에 속하는 클래스들을 별도로 정의해야 하고, request에 대한 mapping은 애플리케이션에 종속적이므로 재사용이 어렵다.
 
-A2.  
+**A2.**  
 * Model :  business logic 수행 및 data 저장 관리 수행   
 * View : UI 및 presentation logic 구현   
 * Controller : Model과 View 사이의 실행 흐름 제어   
  (사용자의 요청 수신, Model의 기능 선택 및 호출, View 선택 및 결과 전송 등)   
 
-A3.  
+**A3.**  
 1) DispatcherServlet / Controller  
 2) Manager / Model  
 3) RequestMapping / Controller  
 
-A4.  
+**A4.**  
 애플리케이션에 대한 모든 request를 해당 servlet이 받음을 의미한다.  
 
