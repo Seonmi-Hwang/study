@@ -1,0 +1,17 @@
+a:link    { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:none;}
+a:visited { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:none;}
+a:active  { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:none;}
+a:hover   { color: #BEA12C; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:underline;}
+
+a.user:link    { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:underline;}
+a.user:visited { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:underline;}
+a.user:active  { color: #333333; font-family: "µ¸¿ò", "±¼¸²"; font-size: 14px; text-decoration:underline;}
+
+td	        {font-family:µ¸¿ò; font-size:14px; color:#333333; line-height:18px;}
+.title 		{font-family:µ¸¿ò; font-size:14pt; color:#000000; line-height:22px;}
+/* Form css */
+.text		{ font-family:µ¸¿ò; font-size:10pt; color:#333333;}
+.textarea	{ font-family:µ¸¿ò; font-size:10pt; color:#333333;}
+.password	{ font-family:µ¸¿ò; font-size:10pt; color:#333333;}
+.file		{ font-family:µ¸¿ò; font-size:10pt; color:#333333;}
+.select		{ font-family:µ¸¿ò; font-size:10pt; color:#333333;}
