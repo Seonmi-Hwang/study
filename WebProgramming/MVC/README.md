@@ -467,6 +467,24 @@ public class ForwardController implements Controller {
 
 **Q4. url-pattern "/" 의 의미에 대해 서술하시오.**
 
+**Q5. MVC pattern의 각 구성요소의 역할을 설명하고, MVC pattern을 쓰지 않은 Model 1과 같은 구조는 어떨 때 부적합한지 서술하시오.**  
+① Model :  
+② View :  
+③ Controller :  
+④ 단점 :  
+
+**Q6. Model을 구성하는 Class들의 기능을 서술하시오.**  
+① Domain class :  
+② BO class :  
+③ DAO class :  
+④ Manager(façade) class :  
+
+**Q7. DispatcherServlet class(Front Controller) 코드의 빈칸을 채우시오.**  
+![image](https://user-images.githubusercontent.com/50273050/68281167-682e4000-00ba-11ea-9aa2-b4118777fc49.png)  
+
+**Q8. request.getAttribute()와 request.getParameter()의 차이점은?**  
+
+<br>
 
 **A1.**  
 Model1 구조는 대부분의 일을 JSP가 모두 처리해야 하지만, Model2(MVC) 구조는 작업들을 분리하여 개발 가능하도록 구성되어 있다. Model1 구조는 프로그램 개발자와 웹 디자이너 사이의 작업의 분리가 어려웠으나, MVC 구조는 분리하여 개발 가능하도록 했기 때문에 개발 및 유지보수의 효율성이 높다. 그러나 MVC구조는 Controller 부분에 속하는 클래스들을 별도로 정의해야 하고, request에 대한 mapping은 애플리케이션에 종속적이므로 재사용이 어렵다.
@@ -484,4 +502,30 @@ Model1 구조는 대부분의 일을 JSP가 모두 처리해야 하지만, Model
 
 **A4.**  
 애플리케이션에 대한 모든 request를 해당 servlet이 받음을 의미한다.  
+
+**A5.**  
+① Model : business logic를 구현하고 database, file system등과의 연동을 하며 data 저장/관리를 수행한다.  
+② View : UI 및 presentation logic 구현  
+③ Controller : Model과 View 사이의 실행 흐름 제어  
+④ 단점:  
+Model 1은 JSP page에서 presentation logic과 business logic, 입출력 데이터 처리, 실행 흐름 제어 등을 모두 구현하는 구조이다.  
+이 구조는 개발 및 유지보수, 재활용에 어려움이 크므로 복잡하고 변경이 많은 application의 경우엔 부적합하다.  
+
+**A6.**  
+① Application에서 사용되는 데이터의 표현 및 전달을 위한 객체인 VO 및 DTO를 정의한다.  
+속성에 대한 setter & getter methods를 포함한다.  
+② Business logic을 구현하는 클래스  
+③ Database나 기존 legacy system과 연동하여 데이터 처리 및 관리를 수행한다. JDBC API 등을 사용하여 구현한다.  
+④ JSP 또는 Controller에서 모델에 접근하기 위해 사용하는 인터페이스(API)를 제공하는 Façade class이다.  
+
+**A7.**  
+① HttpServlet  
+② service  
+③ execute  
+④ sendRedirect  
+⑤ getRequestDispatcher  
+
+**A8.**  
+getParameter()메서드의 경우 String타입을 반환하는 반면, getAttribute()는 Object 타입을 리턴하기 때문에 주로 빈 객체나 다른 클래스를 받아올때 사용된다. 또한, getParameter()는 웹브라우저에서 전송받은 request영역의 값을 읽어오고 getAttribute()의 경우 setAttribute()속성을 통한 설정이 없으면 무조건 null값을 리턴한다.  
+
 
