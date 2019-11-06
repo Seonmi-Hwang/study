@@ -6,24 +6,24 @@ public class vladimirAlgorithm {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		long start = System.currentTimeMillis(); // ¼öÇà½Ã°£ ÃøÁ¤ ½ÃÀÛ
+		long start = System.currentTimeMillis(); // ìˆ˜í–‰ì‹œê°„ ì¸¡ì • ì‹œì‘
 
 		Random rand = new Random();
 		Scanner scan = new Scanner(System.in);
 		
 		final int k = 1000;
 		
-		int L = 640000000;
-		int n = 800;
+		int L = 17;
+		int n = 10;
 		
 		int[] A = new int[n * k];
 		
 		for (int i = 0; i < n * k; i++)
-			A[i] = rand.nextInt(32000000); // random°ª input (Áßº¹ ¹ß»ı °¡´É)
+			A[i] = rand.nextInt(32000000); // randomê°’ input (ì¤‘ë³µ ë°œìƒ ê°€ëŠ¥)
 		
 		vladimirSort(A, 0, A.length - 1, L); // sorting
 		
-		long end = System.currentTimeMillis(); // ¼öÇà½Ã°£ ÃøÁ¤ ³¡
+		long end = System.currentTimeMillis(); // ìˆ˜í–‰ì‹œê°„ ì¸¡ì • ë
 		
 		System.out.println((end - start) / 1000.0);
 	}
@@ -56,7 +56,7 @@ public class vladimirAlgorithm {
 		if (left > right) return;
 		
 		int lpiv, rpiv;
-		int l, g; // l : lpivº¸´Ù ÀÛÀº °ªµéÀÇ index, g : rpivº¸´Ù Å« °ªµéÀÇ index
+		int l, g; // l : lpivë³´ë‹¤ ì‘ì€ ê°’ë“¤ì˜ index, g : rpivë³´ë‹¤ í° ê°’ë“¤ì˜ index
 		
 		if (A[left] > A[right])
 			swap(A, left, right);
@@ -71,10 +71,10 @@ public class vladimirAlgorithm {
 			if (A[k] <= lpiv) {
 				swap(A, l++, k);
 			} else if (A[k] >= rpiv) {
-				while (A[g] >= rpiv && g > k) g--; // A[g]°¡ rpivº¸´Ù Å©´Ù¸é ¿òÁ÷ÀÏ ÇÊ¿äX (´Ü, g > k ÀÎ °æ¿ì±îÁö¸¸)
+				while (A[g] >= rpiv && g > k) g--; // A[g]ê°€ rpivë³´ë‹¤ í¬ë‹¤ë©´ ì›€ì§ì¼ í•„ìš”X (ë‹¨, g > k ì¸ ê²½ìš°ê¹Œì§€ë§Œ)
 				swap(A, g--, k);
 				
-				if (A[k] <= lpiv) { // ¹æ±İ ¹Ù²ï A[k]°¡ lpivº¸´Ù ÀÛÀºÁö È®ÀÎ
+				if (A[k] <= lpiv) { // ë°©ê¸ˆ ë°”ë€ A[k]ê°€ lpivë³´ë‹¤ ì‘ì€ì§€ í™•ì¸
 					swap(A, l++, k);
 				}
 			}
@@ -84,7 +84,7 @@ public class vladimirAlgorithm {
 		swap(A, l, left);
 		swap(A, g, right);
 		
-		// Àç±ÍÈ£Ãâ
+		// ì¬ê·€í˜¸ì¶œ
 		vladimirSort(A, left, l - 1, L);
 		vladimirSort(A, l + 1, g - 1, L);
 		vladimirSort(A, g + 1, right, L);
