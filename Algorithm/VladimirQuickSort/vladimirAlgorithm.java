@@ -1,62 +1,43 @@
 // Dual pivot quicksort + Insertion sort algorithm
 import java.util.Random;
-import java.util.Scanner;
 
 public class vladimirAlgorithm {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		long start = System.currentTimeMillis(); // ºˆ«‡Ω√∞£ √¯¡§ Ω√¿€
-
 		Random rand = new Random();
-		Scanner scan = new Scanner(System.in);
 		
 		final int k = 1000;
 		
-		int L = 640000000;
-		int n = 800;
+		int L = 17;
+		int n = 10;
 		
-		int[] A = new int[n * k];
+		int[] A= new int[n * k];
 		
 		for (int i = 0; i < n * k; i++)
-			A[i] = rand.nextInt(32000000); // random∞™ input (¡ﬂ∫π πﬂª˝ ∞°¥…)
+			A[i] = rand.nextInt(32000000); // randomÍ∞í input (Ï§ëÎ≥µ Î∞úÏÉù Í∞ÄÎä•)
 		
-		vladimirSort(A, 0, A.length - 1, L); // sorting
-		
-		long end = System.currentTimeMillis(); // ºˆ«‡Ω√∞£ √¯¡§ ≥°
+		long start = System.currentTimeMillis(); // ÏàòÌñâÏãúÍ∞Ñ Ï∏°Ï†ï ÏãúÏûë
+
+		vladimirSort(A, 0, A.length -1, L); // sorting
+
+		long end = System.currentTimeMillis(); // ÏàòÌñâÏãúÍ∞Ñ Ï∏°Ï†ï ÎÅù
 		
 		System.out.println((end - start) / 1000.0);
-	}
-	
-	
-	public static void insertionSort(int[] A, int left, int right) {
-		for (int i = left + 1; i <= right; i++) {
-			int item, j;
-			
-			for (j = i - 1; j >= left; j--)
-				if (A[j] < A[i]) 
-					break;
-			item = A[i];
-			
-			j++;
-			for (int k = i ; k > j; k--)
-				A[k] = A[k - 1];
-			A[j] = item;
-		}
-	}
+	}	
 	
 	public static void vladimirSort(int A[], int left, int right, int L) {
 		int len = right - left;
-		
-		if (len < L) { // L = 17, 33, 65, 129, 257, 513
-            insertionSort(A, left, right);
-            return;
-        }
 
 		if (left > right) return;
 		
+		if (len < L) { // L = 17, 33, 65, 129, 257, 513
+            		insertionSort(A, left, right);
+           		return;
+        	}
+		
 		int lpiv, rpiv;
-		int l, g; // l : lpiv∫∏¥Ÿ ¿€¿∫ ∞™µÈ¿« index, g : rpiv∫∏¥Ÿ ≈´ ∞™µÈ¿« index
+		int l, g; // l : lpivÎ≥¥Îã§ ÏûëÏùÄ Í∞íÎì§Ïùò index, g : rpivÎ≥¥Îã§ ÌÅ∞ Í∞íÎì§Ïùò index
 		
 		if (A[left] > A[right])
 			swap(A, left, right);
@@ -71,10 +52,10 @@ public class vladimirAlgorithm {
 			if (A[k] <= lpiv) {
 				swap(A, l++, k);
 			} else if (A[k] >= rpiv) {
-				while (A[g] >= rpiv && g > k) g--; // A[g]∞° rpiv∫∏¥Ÿ ≈©¥Ÿ∏È øÚ¡˜¿œ « ø‰X (¥‹, g > k ¿Œ ∞ÊøÏ±Ó¡ˆ∏∏)
+				while (A[g] >= rpiv && g > k) g--; // A[g]Í∞Ä rpivÎ≥¥Îã§ ÌÅ¨Îã§Î©¥ ÏõÄÏßÅÏùº ÌïÑÏöîX (Îã®, g > k Ïù∏ Í≤ΩÏö∞ÍπåÏßÄÎßå)
 				swap(A, g--, k);
 				
-				if (A[k] <= lpiv) { // πÊ±› πŸ≤Ô A[k]∞° lpiv∫∏¥Ÿ ¿€¿∫¡ˆ »Æ¿Œ
+				if (A[k] <= lpiv) { // Î∞©Í∏à Î∞îÎÄê A[k]Í∞Ä lpivÎ≥¥Îã§ ÏûëÏùÄÏßÄ ÌôïÏù∏
 					swap(A, l++, k);
 				}
 			}
@@ -84,15 +65,31 @@ public class vladimirAlgorithm {
 		swap(A, l, left);
 		swap(A, g, right);
 		
-		// ¿Á±Õ»£√‚
-		vladimirSort(A, left, l - 1, L);
-		vladimirSort(A, l + 1, g - 1, L);
-		vladimirSort(A, g + 1, right, L);
+		// Ïû¨Í∑ÄÌò∏Ï∂ú
+		vladimirSort(A, left, l -1, L);
+		vladimirSort(A, l +1, g -1, L);
+		vladimirSort(A, g +1, right, L);
 	}
 	
-    private static void swap(int[] a, int i, int j) {
-        int tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
+	public static void insertionSort(int[] A, int left, int right) {
+		for (int i = left + 1; i <= right; i++) {
+			int item, j;
+			
+			for (j = i - 1; j >= left; j--)
+				if (A[j] < A[i]) 
+					break;
+			item = A[i];
+			
+			j++;
+			for (int k = i ; k > j; k--)
+				A[k] = A[k -1];
+			A[j] = item;
+		}
+	}
+
+	public static void swap(int[] a, int i, int j) {
+		int tmp = a[i];
+        	a[i] = a[j];
+        	a[j] = tmp;
+    	}
 }
