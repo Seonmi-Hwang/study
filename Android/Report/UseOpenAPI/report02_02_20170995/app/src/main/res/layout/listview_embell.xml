@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvBellNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="No." />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tvBellNo"
+        android:layout_toRightOf="@+id/tvBellNo"
+        android:text="Location" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLocation"
+        android:layout_alignStart="@+id/tvBellNo"
+        android:layout_alignLeft="@+id/tvBellNo"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="9dp"
+        android:text="Address" />
+</RelativeLayout>
