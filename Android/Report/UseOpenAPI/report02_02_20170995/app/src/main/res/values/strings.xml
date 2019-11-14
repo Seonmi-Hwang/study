@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">report02_02_20170995</string>
+    <string name="api_url">http://api.data.go.kr/openapi/safeemgnc-std</string>
+    <string name="secret_key">Ukx9VRhhoqyD1sJvIdH6nMRgMyhaZvYn474Ce2QYvK8qlkn24RpKcjTaLVSG5v7nTyfIhD6L%2FF%2FtJHqsIOdTIA%3D%3D</string>
+</resources>
