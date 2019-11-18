@@ -1,4 +1,20 @@
 ## Web Application의 구조   
+* **내가 이해한 MVC 구조 Summary**
+
+> 1. DTO를 만들고, 실제 변수에는 직접 접근할 수 없도록 getter, setter를 만든다.
+> 1. 데이터를 저장할 수 있는 묶음인 DTO를 가지고 실제 데이터 처리를 하는 DAO를 만든다.
+> 1. Manager를 만들어서 실제 DAO에는 직접 접근할 수 없도록 (getter, setter처럼) DAO에서 정의한 것들을 가져온다.
+> 1. 각 jsp에서 필요한 기능(list 가져오기 | View 가져오기)을 각각 Controller를 만든다.
+> 1. 각 Controller에서 Manager를 만들어서 manager.메소드()로 필요한 객체를 가져오고 setParameter에 싣고 나타낼 jsp의 uri를 return한다.(/recipe/list.jsp)
+> 1. jsp에서 ${EL}을 통해 parameter를 받고, UI를 나타낸다.
+> 1. UI 중에서 href(하이퍼링크)를 통해 다른 jsp로 이동할 때 jsp를 직접 적지 않고 uri를 적는다.
+> 1. uri는 RequestMapping.java에 등록되어 있어야 하며, RequestMapping은 해당 uri와 controller를 매핑시켜준다. 
+> 1. uri를 통해 controller가 호출되고, 그 controller의 역할에 따라 알맞은 처리를 하고, jsp를 호출하고 등등의 역할을 수행한다.
+
+**결론 : DTO -> DAO -> Manager -> Controller -> Jsp -> RequestMapping -> Controller -> Jsp -> RequestMapping -> ...**
+
+<hr>
+
 ### ⬛️ Model1   
 * **JSP page에서** presentation logic, business logic, 입출력 데이터 처리, 실행 흐름제어 등을 **모두 구현**   
 
