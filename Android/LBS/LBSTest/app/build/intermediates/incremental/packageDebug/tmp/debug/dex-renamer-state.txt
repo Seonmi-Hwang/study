@@ -1,0 +1,4 @@
+#Wed Nov 06 22:26:17 KST 2019
+base.0=C\:\\work\\8_LBS\\LBSTest\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

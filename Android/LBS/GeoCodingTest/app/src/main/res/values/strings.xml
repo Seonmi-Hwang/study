@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GeoCodingTest</string>
+    <string name="hint_longitude">127.042650</string>
+    <string name="hint_latitude">37.607398</string>
+    <string name="hint_address">동덕여자대학교</string>
+    <string name="service_not_available">서비스를 사용할 수 없습니다.</string>
+    <string name="invalid_lat_long_used">잘못된 위도/경도 입니다.</string>
+    <string name="no_address_found">주소를 찾을 수 없습니다.</string>
+    <string name="address_found">주소를 찾았습니다.</string>
+    <string name="no_geocoder_available">사용가능한 Geocoder가 없습니다.</string>
+</resources>

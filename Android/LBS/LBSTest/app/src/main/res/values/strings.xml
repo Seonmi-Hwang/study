@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LBSTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="no_address_found">주소를 찾을 수 없습니다.</string>
+    <string name="address_found">주소를 찾았습니다.</string>
+
+</resources>

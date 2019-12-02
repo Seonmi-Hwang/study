@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span>mobile.example.lbs.geocodingtest;
+<a name="l2"><span class="ln">2    </span></a>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import </span>androidx.appcompat.app.AppCompatActivity;
+<a name="l4"><span class="ln">4    </span></a>
+<a name="l5"><span class="ln">5    </span></a><span class="s0">import </span>android.content.Intent;
+<a name="l6"><span class="ln">6    </span></a><span class="s0">import </span>android.location.Location;
+<a name="l7"><span class="ln">7    </span></a><span class="s0">import </span>android.location.LocationManager;
+<a name="l8"><span class="ln">8    </span></a><span class="s0">import </span>android.os.Bundle;
+<a name="l9"><span class="ln">9    </span></a><span class="s0">import </span>android.os.Handler;
+<a name="l10"><span class="ln">10   </span></a><span class="s0">import </span>android.os.ResultReceiver;
+<a name="l11"><span class="ln">11   </span></a><span class="s0">import </span>android.view.View;
+<a name="l12"><span class="ln">12   </span></a><span class="s0">import </span>android.widget.EditText;
+<a name="l13"><span class="ln">13   </span></a>
+<a name="l14"><span class="ln">14   </span></a><span class="s0">import </span>com.google.android.gms.maps.model.LatLng;
+<a name="l15"><span class="ln">15   </span></a>
+<a name="l16"><span class="ln">16   </span></a><span class="s0">import </span>java.util.ArrayList;
+<a name="l17"><span class="ln">17   </span></a>
+<a name="l18"><span class="ln">18   </span></a><span class="s0">public class </span>MainActivity <span class="s0">extends </span>AppCompatActivity {
+<a name="l19"><span class="ln">19   </span></a>
+<a name="l20"><span class="ln">20   </span></a>    <span class="s0">private </span>Location location;
+<a name="l21"><span class="ln">21   </span></a>    <span class="s0">private </span>String address;
+<a name="l22"><span class="ln">22   </span></a>    <span class="s0">private </span>AddressResultReceiver addressResultReceiver;
+<a name="l23"><span class="ln">23   </span></a>    <span class="s0">private </span>LatLngResultReceiver latLngResultReceiver;
+<a name="l24"><span class="ln">24   </span></a>    <span class="s0">private </span>String searchType;
+<a name="l25"><span class="ln">25   </span></a>
+<a name="l26"><span class="ln">26   </span></a>    <span class="s2">/*UI*/</span>
+<a name="l27"><span class="ln">27   </span></a>    EditText etLat;
+<a name="l28"><span class="ln">28   </span></a>    EditText etLng;
+<a name="l29"><span class="ln">29   </span></a>    EditText etAddress;
+<a name="l30"><span class="ln">30   </span></a>
+<a name="l31"><span class="ln">31   </span></a>
+<a name="l32"><span class="ln">32   </span></a>    @Override
+<a name="l33"><span class="ln">33   </span></a>    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+<a name="l34"><span class="ln">34   </span></a>        <span class="s0">super</span>.onCreate(savedInstanceState);
+<a name="l35"><span class="ln">35   </span></a>        setContentView(R.layout.activity_main);
+<a name="l36"><span class="ln">36   </span></a>
+<a name="l37"><span class="ln">37   </span></a>        etLat = findViewById(R.id.etLat);
+<a name="l38"><span class="ln">38   </span></a>        etLng = findViewById(R.id.etLon);
+<a name="l39"><span class="ln">39   </span></a>        etAddress = findViewById(R.id.etAddress);
+<a name="l40"><span class="ln">40   </span></a>
+<a name="l41"><span class="ln">41   </span></a>
+<a name="l42"><span class="ln">42   </span></a>        location = <span class="s0">new </span>Location(LocationManager.PASSIVE_PROVIDER);
+<a name="l43"><span class="ln">43   </span></a>
+<a name="l44"><span class="ln">44   </span></a>        addressResultReceiver = <span class="s0">new </span>AddressResultReceiver(<span class="s0">new </span>Handler());
+<a name="l45"><span class="ln">45   </span></a>        latLngResultReceiver = <span class="s0">new </span>LatLngResultReceiver(<span class="s0">new </span>Handler());
+<a name="l46"><span class="ln">46   </span></a>
+<a name="l47"><span class="ln">47   </span></a>    }
+<a name="l48"><span class="ln">48   </span></a>
+<a name="l49"><span class="ln">49   </span></a>
+<a name="l50"><span class="ln">50   </span></a>    <span class="s0">public void </span>onClick(View v) {
+<a name="l51"><span class="ln">51   </span></a>        <span class="s0">switch</span>(v.getId()) {
+<a name="l52"><span class="ln">52   </span></a>            <span class="s0">case </span>R.id.btnFindAddress:
+<a name="l53"><span class="ln">53   </span></a>                <span class="s0">if </span>(etLat.getText().toString().equals(<span class="s3">&quot;&quot;</span>)) etLat.setText(etLat.getHint());
+<a name="l54"><span class="ln">54   </span></a>                <span class="s0">if </span>(etLng.getText().toString().equals(<span class="s3">&quot;&quot;</span>)) etLng.setText(etLng.getHint());
+<a name="l55"><span class="ln">55   </span></a>                location.setLatitude(Double.valueOf(etLat.getText().toString()));
+<a name="l56"><span class="ln">56   </span></a>                location.setLongitude(Double.valueOf(etLng.getText().toString()));
+<a name="l57"><span class="ln">57   </span></a>                startAddressService();
+<a name="l58"><span class="ln">58   </span></a>                <span class="s0">break</span>;
+<a name="l59"><span class="ln">59   </span></a>            <span class="s0">case </span>R.id.btnLatLon:
+<a name="l60"><span class="ln">60   </span></a>                <span class="s0">if </span>(etAddress.getText().toString().equals(<span class="s3">&quot;&quot;</span>)) etAddress.setText(etAddress.getHint());
+<a name="l61"><span class="ln">61   </span></a>                address = etAddress.getText().toString();
+<a name="l62"><span class="ln">62   </span></a>                startLatLngService();
+<a name="l63"><span class="ln">63   </span></a>                <span class="s0">break</span>;
+<a name="l64"><span class="ln">64   </span></a>            <span class="s0">case </span>R.id.btnClear:
+<a name="l65"><span class="ln">65   </span></a>                etAddress.setText(<span class="s3">&quot;&quot;</span>);
+<a name="l66"><span class="ln">66   </span></a>                etLat.setText(<span class="s3">&quot;&quot;</span>);
+<a name="l67"><span class="ln">67   </span></a>                etLng.setText(<span class="s3">&quot;&quot;</span>);
+<a name="l68"><span class="ln">68   </span></a>        }
+<a name="l69"><span class="ln">69   </span></a>    }
+<a name="l70"><span class="ln">70   </span></a>
+<a name="l71"><span class="ln">71   </span></a>
+<a name="l72"><span class="ln">72   </span></a>
+<a name="l73"><span class="ln">73   </span></a>
+<a name="l74"><span class="ln">74   </span></a>    <span class="s0">protected void </span>startAddressService() {
+<a name="l75"><span class="ln">75   </span></a>        Intent intent = <span class="s0">new </span>Intent(<span class="s0">this</span>, <a href="FetchAddressIntentService.java.html">FetchAddressIntentService</a>.<span class="s0">class</span>);
+<a name="l76"><span class="ln">76   </span></a>        intent.putExtra(<a href="Constants.java.html">Constants</a>.RECEIVER, addressResultReceiver);
+<a name="l77"><span class="ln">77   </span></a>        intent.putExtra(<a href="Constants.java.html">Constants</a>.ADDRESS_DATA_EXTRA, location);
+<a name="l78"><span class="ln">78   </span></a>        startService(intent);
+<a name="l79"><span class="ln">79   </span></a>    }
+<a name="l80"><span class="ln">80   </span></a>
+<a name="l81"><span class="ln">81   </span></a>
+<a name="l82"><span class="ln">82   </span></a>    <span class="s0">protected void </span>startLatLngService() {
+<a name="l83"><span class="ln">83   </span></a>        Intent intent = <span class="s0">new </span>Intent(<span class="s0">this</span>, <a href="FetchLatLngIntentService.java.html">FetchLatLngIntentService</a>.<span class="s0">class</span>);
+<a name="l84"><span class="ln">84   </span></a>        intent.putExtra(<a href="Constants.java.html">Constants</a>.RECEIVER, latLngResultReceiver);
+<a name="l85"><span class="ln">85   </span></a>        intent.putExtra(<a href="Constants.java.html">Constants</a>.ADDRESS_DATA_EXTRA, address);
+<a name="l86"><span class="ln">86   </span></a>        startService(intent);
+<a name="l87"><span class="ln">87   </span></a>    }
+<a name="l88"><span class="ln">88   </span></a>
+<a name="l89"><span class="ln">89   </span></a>
+<a name="l90"><span class="ln">90   </span></a>
+<a name="l91"><span class="ln">91   </span></a>
+<a name="l92"><span class="ln">92   </span></a>    <span class="s0">class </span>AddressResultReceiver <span class="s0">extends </span>ResultReceiver {
+<a name="l93"><span class="ln">93   </span></a>        <span class="s0">public </span>AddressResultReceiver(Handler handler) {
+<a name="l94"><span class="ln">94   </span></a>            <span class="s0">super</span>(handler);
+<a name="l95"><span class="ln">95   </span></a>        }
+<a name="l96"><span class="ln">96   </span></a>
+<a name="l97"><span class="ln">97   </span></a>        @Override
+<a name="l98"><span class="ln">98   </span></a>        <span class="s0">protected void </span>onReceiveResult(<span class="s0">int </span>resultCode, Bundle resultData) {
+<a name="l99"><span class="ln">99   </span></a>
+<a name="l100"><span class="ln">100  </span></a>            String addressOutput = <span class="s0">null</span>;
+<a name="l101"><span class="ln">101  </span></a>
+<a name="l102"><span class="ln">102  </span></a>            <span class="s0">if </span>(resultCode == <a href="Constants.java.html">Constants</a>.SUCCESS_RESULT) {
+<a name="l103"><span class="ln">103  </span></a>                <span class="s0">if </span>(resultData == <span class="s0">null</span>) <span class="s0">return</span>;
+<a name="l104"><span class="ln">104  </span></a>                addressOutput = resultData.getString(<a href="Constants.java.html">Constants</a>.RESULT_DATA_KEY);
+<a name="l105"><span class="ln">105  </span></a>                <span class="s0">if </span>(addressOutput == <span class="s0">null</span>) addressOutput = <span class="s3">&quot;&quot;</span>;
+<a name="l106"><span class="ln">106  </span></a>                etAddress.setText(addressOutput);
+<a name="l107"><span class="ln">107  </span></a>            }
+<a name="l108"><span class="ln">108  </span></a>        }
+<a name="l109"><span class="ln">109  </span></a>    }
+<a name="l110"><span class="ln">110  </span></a>
+<a name="l111"><span class="ln">111  </span></a>
+<a name="l112"><span class="ln">112  </span></a>    <span class="s0">class </span>LatLngResultReceiver <span class="s0">extends </span>ResultReceiver {
+<a name="l113"><span class="ln">113  </span></a>        <span class="s0">public </span>LatLngResultReceiver(Handler handler) {
+<a name="l114"><span class="ln">114  </span></a>            <span class="s0">super</span>(handler);
+<a name="l115"><span class="ln">115  </span></a>        }
+<a name="l116"><span class="ln">116  </span></a>
+<a name="l117"><span class="ln">117  </span></a>        @Override
+<a name="l118"><span class="ln">118  </span></a>        <span class="s0">protected void </span>onReceiveResult(<span class="s0">int </span>resultCode, Bundle resultData) {
+<a name="l119"><span class="ln">119  </span></a>
+<a name="l120"><span class="ln">120  </span></a>            String lat;
+<a name="l121"><span class="ln">121  </span></a>            String lng;
+<a name="l122"><span class="ln">122  </span></a>            ArrayList&lt;LatLng&gt; latLngList = <span class="s0">null</span>;
+<a name="l123"><span class="ln">123  </span></a>
+<a name="l124"><span class="ln">124  </span></a>            <span class="s0">if </span>(resultCode == <a href="Constants.java.html">Constants</a>.SUCCESS_RESULT) {
+<a name="l125"><span class="ln">125  </span></a>                <span class="s0">if </span>(resultData == <span class="s0">null</span>) <span class="s0">return</span>;
+<a name="l126"><span class="ln">126  </span></a>                latLngList = (ArrayList&lt;LatLng&gt;) resultData.getSerializable(<a href="Constants.java.html">Constants</a>.RESULT_DATA_KEY);
+<a name="l127"><span class="ln">127  </span></a>                <span class="s0">if </span>(latLngList == <span class="s0">null</span>) {
+<a name="l128"><span class="ln">128  </span></a>                    lat = (String) etLat.getHint();
+<a name="l129"><span class="ln">129  </span></a>                    lng = (String) etLng.getHint();
+<a name="l130"><span class="ln">130  </span></a>                } <span class="s0">else </span>{
+<a name="l131"><span class="ln">131  </span></a>                    LatLng latlng = latLngList.get(<span class="s4">0</span>);
+<a name="l132"><span class="ln">132  </span></a>                    lat = String.valueOf(latlng.latitude);
+<a name="l133"><span class="ln">133  </span></a>                    lng = String.valueOf(latlng.longitude);
+<a name="l134"><span class="ln">134  </span></a>                }
+<a name="l135"><span class="ln">135  </span></a>
+<a name="l136"><span class="ln">136  </span></a>                etLat.setText(lat);
+<a name="l137"><span class="ln">137  </span></a>                etLng.setText(lng);
+<a name="l138"><span class="ln">138  </span></a>            }
+<a name="l139"><span class="ln">139  </span></a>        }
+<a name="l140"><span class="ln">140  </span></a>    }
+<a name="l141"><span class="ln">141  </span></a>
+<a name="l142"><span class="ln">142  </span></a>
+<a name="l143"><span class="ln">143  </span></a>}
+<a name="l144"><span class="ln">144  </span></a></pre>
+</body>
+</html>
