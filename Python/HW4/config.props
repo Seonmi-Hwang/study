@@ -1,0 +1,9 @@
+[DB_DEFAULT]
+DB.host=localhost
+DB.port=3306
+DB.user=bigdatalab
+DB.passwd=1234
+DB.db=price_tbl
+[WEBSERVER_DEFAULT]
+WEB.port=8088
+WEB.bufsize=1024
