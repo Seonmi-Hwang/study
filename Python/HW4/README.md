@@ -149,3 +149,27 @@ WEB.bufsize=1024
 
 [configuration.py]  
 ![image](https://user-images.githubusercontent.com/50273050/69321077-c4ca5700-0c85-11ea-99b0-9a01795e184b.png)
+
+## [실행화면]   
+**HW4_1을 약 30 ~ 40 정도 수행시킨 후 확인한 결과이다.** 
+
+### 1. HW4_check_db.py와 HW4_check_web.py 실행 시 출력결과  
+![출력결과1](https://user-images.githubusercontent.com/50273050/70376434-6d4a0d80-194c-11ea-9a9b-c4179ad2a6ee.JPG)  
+
+### 2. HTML 형식으로 출력한 HW4_check_web.py 출력결과  
+![출력결과2](https://user-images.githubusercontent.com/50273050/70376441-86eb5500-194c-11ea-84a8-ea818484987f.JPG)  
+
+### 3. HW4_1 실행 시 출력결과
+![HW4_1 실행화면](https://user-images.githubusercontent.com/50273050/70376451-9ec2d900-194c-11ea-98d8-5445e3a31689.JPG)  
+
+### 4. HW4_2 실행 시 출력결과  
+![HW4_2 실행화면](https://user-images.githubusercontent.com/50273050/70376456-ae422200-194c-11ea-9c2b-c91df10a0a4e.JPG)  
+
+### 5. 웹 실행결과  
+![웹실행결과](https://user-images.githubusercontent.com/50273050/70376471-bb5f1100-194c-11ea-97fb-eb7ba80f901e.JPG)  
+
+## [주의사항]  
+DB에는 모든 날짜들의 정보가 들어있다해도, 해당 날짜(년-월-일)에 맞는 **'오늘의'** 정보만 웹페이지에 출력할 것.
+
+
+
