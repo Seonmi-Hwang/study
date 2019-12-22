@@ -108,3 +108,6 @@ for k in range(1, 20, 2): # 1부터 20까지의 홀수만
     #print(str(errorCount) + "/" + str(count))
     print(int(errorCount / count * 100))
 ```
+
+📘 REF  
+https://codeapp.tistory.com/6
