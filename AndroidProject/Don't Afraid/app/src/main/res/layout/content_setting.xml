@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/lvContacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvName"
+        android:layout_marginTop="0dp"></ListView>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="102dp"
+        android:layout_height="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:gravity="center"
+        android:text="단축번호"
+        android:textColor="#000033"
+        android:textSize="20sp" />
+
+</RelativeLayout>

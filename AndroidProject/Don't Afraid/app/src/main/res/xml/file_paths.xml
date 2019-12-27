@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path
+        name="hidden"
+        path="Android/data/dduwcom.mobile.ma02_20170995/files/Pictures"/>
+</paths>

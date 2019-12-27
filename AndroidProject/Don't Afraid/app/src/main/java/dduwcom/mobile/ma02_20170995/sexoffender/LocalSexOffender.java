@@ -1,4 +1,4 @@
-package dduwcom.mobile.ma02_20170995;
+package dduwcom.mobile.ma02_20170995.sexoffender;
 
 public class LocalSexOffender {
     private long _id;

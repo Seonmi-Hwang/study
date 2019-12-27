@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/item1"
-        android:icon="@drawable/ic_menu_camera"
-        android:title="item1" />
+        android:icon="@drawable/baseline_map_black_48dp"
+        android:title="지도" />
     <item
         android:id="@+id/item2"
-        android:icon="@drawable/ic_menu_gallery"
-        android:title="item2" />
+        android:icon="@drawable/baseline_menu_book_black_48dp"
+        android:title="지역별 성범죄자 정보" />
     <item
         android:id="@+id/item3"
-        android:icon="@drawable/ic_menu_slideshow"
-        android:title="item3" />
+        android:icon="@drawable/baseline_gavel_black_48dp"
+        android:title="생활법령" />
 
 </menu>

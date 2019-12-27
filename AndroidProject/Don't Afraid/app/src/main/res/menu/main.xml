@@ -9,8 +9,8 @@
 
     <item
         android:id="@+id/settings"
-        android:title="설정" />
+        android:title="설정"/>
     <item
-        android:id="@+id/appInfo"
-        android:title="정보" />
+        android:id="@+id/exit"
+        android:title="종료"/>
 </menu>

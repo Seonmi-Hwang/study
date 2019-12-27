@@ -1,4 +1,4 @@
-package dduwcom.mobile.ma02_20170995;
+package dduwcom.mobile.ma02_20170995.geocoding;
 
 /* 앱에 사용할 상수 값을 정의한 클래스 */
 public class Constants {

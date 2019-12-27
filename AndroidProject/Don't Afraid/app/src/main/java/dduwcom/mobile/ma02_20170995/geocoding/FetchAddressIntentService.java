@@ -1,4 +1,4 @@
-package dduwcom.mobile.ma02_20170995;
+package dduwcom.mobile.ma02_20170995.geocoding;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import dduwcom.mobile.ma02_20170995.R;
 
 public class FetchAddressIntentService extends IntentService {
 
