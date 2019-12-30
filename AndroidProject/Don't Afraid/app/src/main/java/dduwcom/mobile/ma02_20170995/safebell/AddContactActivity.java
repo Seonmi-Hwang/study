@@ -1,4 +1,4 @@
-package dduwcom.mobile.ma02_20170995.contact;
+package dduwcom.mobile.ma02_20170995.safebell;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dduwcom.mobile.ma02_20170995.R;
+import dduwcom.mobile.ma02_20170995.contact.ContactDBHelper;
+import dduwcom.mobile.ma02_20170995.contact.SettingActivity;
 
 public class AddContactActivity extends AppCompatActivity {
     ContactDBHelper helper;
@@ -90,7 +92,7 @@ public class AddContactActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) { // 앱 종료 수행
-                                finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("취소", null)

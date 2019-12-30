@@ -1,4 +1,4 @@
-package dduwcom.mobile.ma02_20170995;
+package dduwcom.mobile.ma02_20170995.safebell;
 
 import java.io.Serializable;
 
@@ -7,8 +7,8 @@ public class SafeBellDto implements Serializable {
 
     private int _id;
     private String safeBellNo;
-    private String latitude; // 위도
-    private String hardness; // 경도
+    private String location;
+    private String address;
 
     public SafeBellDto() { }
 
@@ -28,20 +28,19 @@ public class SafeBellDto implements Serializable {
         this.safeBellNo = safeBellNo;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getHardness() {
-        return hardness;
+    public String getAddress() {
+        return address;
     }
 
-    public void setHardness(String hardness) {
-        this.hardness = hardness;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
 }

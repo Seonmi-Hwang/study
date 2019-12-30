@@ -26,7 +26,7 @@ public class ContactDBHelper extends SQLiteOpenHelper {
 		Log.d(TAG, createSql);
 		db.execSQL(createSql);
 
-		db.execSQL("insert into " + TABLE_NAME + " values (null, '선미', '5555215554')");
+//		db.execSQL("insert into " + TABLE_NAME + " values (null, '선미', '01071526916')");
 	}
 
 	@Override

@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import dduwcom.mobile.ma02_20170995.LawInfoActivity;
 import dduwcom.mobile.ma02_20170995.MainActivity;
 import dduwcom.mobile.ma02_20170995.R;
+import dduwcom.mobile.ma02_20170995.safebell.AddContactActivity;
+import dduwcom.mobile.ma02_20170995.safebell.SafeBellActivity;
 import dduwcom.mobile.ma02_20170995.sexoffender.SexOffenderInfoActivity;
 
 public class SettingActivity extends AppCompatActivity {
@@ -155,6 +157,10 @@ public class SettingActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(getApplicationContext(), LawInfoActivity.class);
                         startActivity(intent2);
                         break;
+                    case R.id.item4:
+                        Intent intent3 = new Intent(getApplicationContext(), SafeBellActivity.class);
+                        startActivity(intent3);
+                        break;
                 }
 
 
@@ -211,7 +217,7 @@ public class SettingActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) { // 앱 종료 수행
-                                finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("취소", null)

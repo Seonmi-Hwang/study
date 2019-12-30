@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <EditText
+        android:id="@+id/etTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="원하는 지역을 검색하세요. (ex. 서울특별시 구로구)"
+        android:inputType="text"
+        android:textSize="14sp"
+        tools:inputType="number" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTarget"
+        android:layout_marginTop="-1dp"
+        android:onClick="onClick"
+        android:text="SEARCH" />
+
+    <ListView
+        android:id="@+id/lvList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSearch"
+        android:layout_marginTop="0dp" />
+
+</RelativeLayout>

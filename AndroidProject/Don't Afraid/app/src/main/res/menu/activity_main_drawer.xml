@@ -13,5 +13,9 @@
         android:id="@+id/item3"
         android:icon="@drawable/baseline_gavel_black_48dp"
         android:title="생활법령" />
+    <item
+        android:id="@+id/item4"
+        android:icon="@drawable/baseline_menu_book_black_48dp"
+        android:title="안전비상벨 위치" />
 
 </menu>

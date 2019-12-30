@@ -72,6 +72,8 @@ public class LawInfoActivity extends AppCompatActivity {
             return;
         } // 네트워크 환경 조사
 
+
+
         new AsyncTask<Object, Object, Object>() { // 네트워크 작업을 할 AsyncTask
 
             final static String NETWORK_ERR_MSG = "Server Error!";
@@ -165,8 +167,9 @@ public class LawInfoActivity extends AppCompatActivity {
             }
 
         }.execute(view);
-    }
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     /* 이하 네트워크 접속을 위한 메소드 */
 
@@ -282,7 +285,7 @@ public class LawInfoActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) { // 앱 종료 수행
-                                finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("취소", null)

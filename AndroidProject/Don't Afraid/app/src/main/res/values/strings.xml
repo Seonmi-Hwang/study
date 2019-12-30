@@ -20,6 +20,7 @@
     <string name="address_found">주소를 찾았습니다.</string>
     <string name="no_geocoder_available">사용가능한 Geocoder가 없습니다.</string>
     <string name="sexoffender_api_url">http://116.67.77.182/openapi/SOCitysStats</string>
+    <string name="safeBell_api_url">http://api.data.go.kr/openapi/safeemgnc-std</string>
+    <string name="cctv_api_url">http://api.data.go.kr/openapi/cctv-std</string>
     <string name="open_api_key">Ukx9VRhhoqyD1sJvIdH6nMRgMyhaZvYn474Ce2QYvK8qlkn24RpKcjTaLVSG5v7nTyfIhD6L%2FF%2FtJHqsIOdTIA%3D%3D</string>
-    <string name="bell_api_url">http://api.data.go.kr/openapi/safeemgnc-std?serviceKey=Ukx9VRhhoqyD1sJvIdH6nMRgMyhaZvYn474Ce2QYvK8qlkn24RpKcjTaLVSG5v7nTyfIhD6L%2FF%2FtJHqsIOdTIA%3D%3D</string>
 </resources>

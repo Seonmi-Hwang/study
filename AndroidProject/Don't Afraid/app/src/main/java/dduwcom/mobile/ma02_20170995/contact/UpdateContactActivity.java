@@ -99,7 +99,7 @@ public class UpdateContactActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) { // 앱 종료 수행
-                                finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("취소", null)

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvInstitution"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="관리기관" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOldAddress"
+        android:layout_marginStart="-4dp"
+        android:layout_marginLeft="-4dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvCctvNum"
+        android:layout_toRightOf="@+id/tvCctvNum"
+        android:text="대 작동중" />
+
+    <TextView
+        android:id="@+id/tvOldAddress"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvInstitution"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="-20dp"
+        android:layout_toEndOf="@+id/tvPhoneNum"
+        android:layout_toRightOf="@+id/tvPhoneNum"
+        android:text="구주소" />
+
+    <TextView
+        android:id="@+id/tvCctvNum"
+        android:layout_width="18dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOldAddress"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvPurpose"
+        android:layout_toRightOf="@+id/tvPurpose"
+        android:text="n" />
+
+    <TextView
+        android:id="@+id/tvPurpose"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOldAddress"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvInstitution"
+        android:layout_toRightOf="@+id/tvInstitution"
+        android:text="설치목적" />
+
+    <TextView
+        android:id="@+id/tvPhoneNum"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvInstitution"
+        android:layout_alignStart="@+id/tvInstitution"
+        android:layout_alignLeft="@+id/tvInstitution"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="전화번호" />
+
+</RelativeLayout>

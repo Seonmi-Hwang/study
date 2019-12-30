@@ -39,20 +39,27 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />
 
-        <activity android:name=".sexoffender.SexOffenderInfoActivity"/>
+        <activity android:name=".sexoffender.SexOffenderInfoActivity"
+            android:label="지역별 성범죄자 정보"/>
 
         <activity android:name=".contact.SettingActivity"
             android:label="@string/setting_name"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".contact.AddContactActivity"
+        <activity android:name=".safebell.AddContactActivity"
             android:label="@string/add_contact"/>
 
         <activity android:name=".contact.UpdateContactActivity"
             android:label="@string/update_contact"/>
 
         <activity android:name=".LawInfoActivity"
-            android:label="백문백답 생활법령"/>
+            android:label="생활법령"/>
+
+        <activity android:name=".safebell.SafeBellActivity"
+            android:label="안전비상벨 위치정보"/>
+
+        <activity android:name=".safebell.CctvActivity"
+            android:label="주변 CCTV 위치정보"/>
 
         <service
             android:name=".geocoding.FetchAddressIntentService"

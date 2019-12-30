@@ -29,7 +29,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.telephony.SmsManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -51,7 +50,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -66,6 +64,7 @@ import dduwcom.mobile.ma02_20170995.contact.ContactDBHelper;
 import dduwcom.mobile.ma02_20170995.contact.SettingActivity;
 import dduwcom.mobile.ma02_20170995.geocoding.Constants;
 import dduwcom.mobile.ma02_20170995.geocoding.FetchAddressIntentService;
+import dduwcom.mobile.ma02_20170995.safebell.SafeBellActivity;
 import dduwcom.mobile.ma02_20170995.sexoffender.SexOffenderInfoActivity;
 import noman.googleplaces.NRPlaces;
 import noman.googleplaces.PlaceType;
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String bestProvider;
 
-//    /* OPEN API 전국안전비상벨위치표준데이터 */
+    /* OPEN API 전국안전비상벨위치표준데이터 */
 //    private String apiAddress;
 //    ArrayList<SafeBellDto> resultList;
 
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         helper = new ContactDBHelper(this);
 
-//        apiAddress = getResources().getString(R.string.bell_api_url);
+//        apiAddress = getResources().getString(R.string.safeBell_api_url) + "?serviceKey=" + getResources().getString(R.string.open_api_key) + "&insttNm=";
 //        resultList = new ArrayList<SafeBellDto>();
 
         /* Geocoding */
@@ -303,14 +302,19 @@ public class MainActivity extends AppCompatActivity {
 
         takeCapture();
 
+        if (cursor == null ) {
+            Toast.makeText(MainActivity.this, "단축번호를 추가해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // MMS 발송
         if (mCurrentPhotoPath != null) {
             while (cursor.moveToNext()) {
+
                 Log.d(TAG, "file:/" + mCurrentPhotoPath);
                 String phone = cursor.getString(cursor.getColumnIndex(ContactDBHelper.COL_PHONE));
                 String message = "도와주세요. 제 현위치는 이곳입니다.\n" + address;
 
-                Log.d(TAG, String.valueOf(Uri.fromFile(photoFile)));
                 Uri uri;
                 if (Build.VERSION.SDK_INT < 24) {
                     uri = Uri.fromFile(photoFile);
@@ -331,9 +335,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
         }
-        Toast.makeText(getApplicationContext(), "전송 성공!", Toast.LENGTH_LONG).show();
     }
 
     public void takeCapture() { // 캡쳐하고 저장한 파일의 위치를 반환
@@ -420,6 +422,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(getApplicationContext(), LawInfoActivity.class);
                         startActivity(intent2);
                         break;
+                    case R.id.item4:
+                        Intent intent3 = new Intent(getApplicationContext(), SafeBellActivity.class);
+                        startActivity(intent3);
+                        break;
                 }
 
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -444,9 +450,6 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         locManager.removeUpdates(locListener); // 위치 조사 종료
     }
-
-
-
 
     /* 위치 정보 수신 리스너 생성 */
     LocationListener locListener = new LocationListener() {
@@ -654,7 +657,7 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) { // 앱 종료 수행
-                            finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("취소", null)
