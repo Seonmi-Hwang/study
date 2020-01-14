@@ -4,6 +4,6 @@ public class TestClass {
     public static void main(String[] args) {
         System.out.println("Hi!");
         System.out.println("new_branch!");
-        System.out.println("Edit in Gibhub");
+        System.out.println("Edit in Github");
     }
 }
