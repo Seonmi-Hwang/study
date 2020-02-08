@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dduwcom.mobile.ma02_20170995">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_MMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher_person"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_person_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <!--외부의 앱이 내 앱의 파일을 접근할 수 있도록 FileProvider 지정-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="dduwcom.mobile.ma02_20170995"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
+
+        <activity android:name=".sexoffender.SexOffenderInfoActivity"
+            android:label="지역별 성범죄자 정보"/>
+
+        <activity android:name=".contact.SettingActivity"
+            android:label="@string/setting_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".safebell.AddContactActivity"
+            android:label="@string/add_contact"/>
+
+        <activity android:name=".contact.UpdateContactActivity"
+            android:label="@string/update_contact"/>
+
+        <activity android:name=".LawInfoActivity"
+            android:label="생활법령"/>
+
+        <activity android:name=".safebell.SafeBellActivity"
+            android:label="안전비상벨 위치정보"/>
+
+        <activity android:name=".safebell.CctvActivity"
+            android:label="주변 CCTV 위치정보"/>
+
+        <service
+            android:name=".geocoding.FetchAddressIntentService"
+            android:exported="false"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
