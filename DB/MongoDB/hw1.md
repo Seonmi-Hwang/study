@@ -133,3 +133,9 @@ db.employees.aggregate([{$group : {_id : "$deptno", avg_sal : {$avg : "$sal"}}},
 ```json
 db.employees.aggregate([{$group : {_id : "$deptno", avg_sal : {$avg : "$sal"}}}, {$match : {_id : {$gt : 10}, avg_sal : {$gte : 2000}}}])  
 ```
+
+## 실행결과  
+
+![1~9](https://user-images.githubusercontent.com/50273050/80944045-93080f80-8e23-11ea-94e1-9b64c831aeb0.jpg)  
+
+![10~15번](https://user-images.githubusercontent.com/50273050/80944053-94393c80-8e23-11ea-8a84-5c1f2a9f28c1.JPG)  
