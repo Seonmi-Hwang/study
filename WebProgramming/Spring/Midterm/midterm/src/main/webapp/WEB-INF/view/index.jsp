@@ -5,18 +5,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>공연</title>
+        <title>공연 일정</title>
     </head>
     <style>
     table {
-    	font-weight : bold;
     	border-collapse: collapse;
+    	text-align : center;
     	table-layout : auto;
     }
-    td {
-    	padding-left : 15px;
+    
+    tr, td {
+        padding-left : 15px;
     	padding-right : 15px;
     }
+    
     </style>
     <body>
     	<p>공연 일정:</p>
@@ -33,12 +35,12 @@
 			<c:forEach var="performer" items="${performers}">
 				<tr>
 					<td>${performer.id}</td>
-					<td><a href="<c:url value="/join/detail" />">${performer.email}</a></td>
+					<td><a href="<c:url value="/performer/detail/${performer.id}" />">${performer.email}</a></td>
 					<td>${performer.name}</td>
 					<td>${performer.type}</td>
 					<td>${performer.title}</td>
 					<td>${performer.time}</td>
-					<td><a href="<c:url value="/join/delete" />">삭제</a></td>
+					<td><a href="<c:url value="/performer/delete/${performer.id}" />">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>

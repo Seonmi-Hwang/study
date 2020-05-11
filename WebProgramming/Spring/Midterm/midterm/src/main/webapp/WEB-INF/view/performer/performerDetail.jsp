@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원 목록</title>
+<title>회원 상세 정보</title>
 </head>
 <body>
 <ul>
-	<c:forEach var="mi" items="${members}">
-		<li><a href="<c:url value='/members/' />${mi.id}">${mi.name}</a></li>
-	</c:forEach>
+	<li>ID: ${performer.id}</li>
+	<li>이름: ${performer.name}</li>
+	<li>주소: ${performer.address.street} ${performer.address.city} (우편번호: ${performer.address.zipcode})</li>
 </ul>
 
 <p><a href="<c:url value='/index' />">Go to index</a></p>
