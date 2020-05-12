@@ -20,6 +20,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/performer/detail"/>
+<!-- 			<mvc:mapping path="/performer/delete"/> -->
+			<bean class="org.springframework.samples.controller.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

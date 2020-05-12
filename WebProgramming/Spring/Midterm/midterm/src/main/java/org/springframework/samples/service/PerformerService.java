@@ -34,6 +34,10 @@ public class PerformerService {
 		}
 		return null;
 	}
+
+	public void removePerformer(int performerId) {
+		performerMap.remove(performerId);
+	}
 	
 	public int joinNewPerformer(PerformerForm performerForm) {
 		PerformerInfo pi = new PerformerInfo(
@@ -51,4 +55,5 @@ public class PerformerService {
 		performerMap.put(pi.getId(), pi);
 		return pi.getId();
 	}
+	
 }

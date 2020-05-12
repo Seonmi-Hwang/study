@@ -35,12 +35,16 @@
 			<c:forEach var="performer" items="${performers}">
 				<tr>
 					<td>${performer.id}</td>
-					<td><a href="<c:url value="/performer/detail/${performer.id}" />">${performer.email}</a></td>
+					<td><a href="<c:url value="/performer/detail">
+									<c:param name="email" value="${performer.email}"/>
+								</c:url>">${performer.email}</a></td>
 					<td>${performer.name}</td>
 					<td>${performer.type}</td>
 					<td>${performer.title}</td>
 					<td>${performer.time}</td>
-					<td><a href="<c:url value="/performer/delete/${performer.id}" />">삭제</a></td>
+					<td><a href="<c:url value="/performer/delete">
+									<c:param name="email" value="${performer.email}"/>
+								</c:url>">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>

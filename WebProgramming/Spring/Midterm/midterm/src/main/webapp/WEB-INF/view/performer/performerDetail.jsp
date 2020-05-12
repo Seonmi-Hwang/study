@@ -7,11 +7,16 @@
 </head>
 <body>
 <ul>
-	<li>ID: ${performer.id}</li>
-	<li>이름: ${performer.name}</li>
-	<li>주소: ${performer.address.street} ${performer.address.city} (우편번호: ${performer.address.zipcode})</li>
+	<li>ID: ${login.email}</li>
+	<li>이름: ${login.name}</li>
+	<li>전화번호 : ${login.phoneNumber}</li>
+	<li>주소: ${login.address.street} ${login.address.city} (우편번호: ${login.address.zipcode})</li>
+	<li>공연 종류 : ${login.type}</li>
+	<li>곡명 : ${login.title}</li>
+	<li>공연 시간 : ${login.time}</li>
+	<li>첫 공연 여부 : ${login.first}</li>
 </ul>
 
-<p><a href="<c:url value='/index' />">Go to index</a></p>
+<p><a href="<c:url value='/index' />">Go to schedule</a></p>
 </body>
 </html>

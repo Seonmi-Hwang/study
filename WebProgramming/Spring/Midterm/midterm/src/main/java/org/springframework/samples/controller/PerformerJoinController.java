@@ -8,6 +8,7 @@ import org.springframework.samples.service.PerformerService;
 import org.springframework.samples.validator.PerformanceValidator;
 import org.springframework.samples.validator.PerformerJoinValidator;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("joinForm")
+@SessionAttributes({"joinForm", "login"})
 public class PerformerJoinController {
 
 	@Autowired
@@ -68,10 +69,11 @@ public class PerformerJoinController {
 	
 	@PostMapping("/newJoin/done")		// step3 -> done 이동
 	public String done(
-				@ModelAttribute("joinForm") PerformerForm memRegReq,
-				SessionStatus sessionStatus) {
-		performerService.joinNewPerformer(memRegReq);
+				@ModelAttribute("joinForm") PerformerForm performerForm,
+				SessionStatus sessionStatus, Model model) {
+		performerService.joinNewPerformer(performerForm);
 		sessionStatus.setComplete();	// session 종료
+		model.addAttribute("login", performerForm); // login session에 추가
 		return "join/creationDone";		// done view로 이동
 	}
 	

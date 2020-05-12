@@ -1,7 +1,6 @@
 package org.springframework.samples.validator;
 
 import org.springframework.samples.controller.PerformerForm;
-import org.springframework.samples.model.Address;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -38,7 +37,7 @@ public class PerformerJoinValidator implements Validator {
 		}
 		
 		String zipcode = regReq.getAddress().getZipcode();
-		if (!zipcode.equals("") && zipcode.length() != 5) {
+		if (!zipcode.equals("") && !zipcode.matches("^\\d{5}$")) {
 			errors.pushNestedPath("address");
 			try {
 				errors.rejectValue("zipcode", "typeMismatch");

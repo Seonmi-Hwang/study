@@ -32,7 +32,7 @@ ${joinForm.name}님의 공연 신청을 접수했습니다.<br>
 	document.write(today)
 </script>
 
-<p><a href="<c:url value='/index' />">Go to index</a></p>
+<p><a href="<c:url value='/index' />">Go to schedule</a></p>
 
 </body>
 </html>
