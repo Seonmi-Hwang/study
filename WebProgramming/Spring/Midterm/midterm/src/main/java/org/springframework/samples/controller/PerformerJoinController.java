@@ -1,5 +1,10 @@
 package org.springframework.samples.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,15 +51,15 @@ public class PerformerJoinController {
 		
 		new PerformerJoinValidator().validate(memRegReq, bindingResult);
 		
-		if (bindingResult.hasErrors()) {
-			return "join/creationStep1";
-		}
-		
 		if (performerService.getPerformerInfoByEmail(memRegReq.getEmail()) != null) {
 			bindingResult.reject("sameEmailExist", new Object[] {}, null);
 			return "join/creationStep1";
 		}
 		
+		if (bindingResult.hasErrors()) {
+			return "join/creationStep1";
+		}
+
 		return "join/creationStep2";
 	}
 	
@@ -80,6 +85,10 @@ public class PerformerJoinController {
 				SessionStatus sessionStatus, Model model) {
 		performerService.joinNewPerformer(performerForm);
 		sessionStatus.setComplete();	// joinForm session 종료
+		
+		Date date = new Date();
+		model.addAttribute("currentTime", date);
+		
 		return "join/creationDone";		// done view로 이동
 	}
 

@@ -26,11 +26,7 @@ ${joinForm.name}님의 공연 신청을 접수했습니다.<br>
 	<li><label>첫 공연 여부</label>: ${joinForm.first} </li>	
 </ul>
 
-접수 일시 : 
-<script>
-	let today = new Date();   
-	document.write(today)
-</script>
+접수 일시 : ${currentTime}
 
 <p><a href="<c:url value='/index' />">Go to schedule</a></p>
 
