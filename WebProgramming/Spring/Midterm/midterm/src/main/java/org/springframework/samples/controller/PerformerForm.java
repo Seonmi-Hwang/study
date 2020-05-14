@@ -108,7 +108,7 @@ public class PerformerForm {
 
 	@Override
 	public String toString() {
-		return "MemberRegistRequest [name=" + name + ", address=" + address + ", email=" + email + ", password="
+		return "PerformerForm [name=" + name + ", address=" + address + ", email=" + email + ", password="
 				+ password + ", confirmPassword=" + confirmPassword + ", phoneNumber=" + phoneNumber + ", type=" + type
 				+ ", title=" + title + ", time=" + time + ", first=" + first + "]";
 	}

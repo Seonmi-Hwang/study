@@ -14,6 +14,7 @@
 		<label for="email">ID(이메일 주소)</label>: 
 		<form:input path="email" />
 		<form:errors path="email" />
+		<form:errors />
 		<br />
 
 		<label for="name">이름</label>: 

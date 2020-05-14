@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes({"joinForm", "login"})
+@SessionAttributes("joinForm")
 public class PerformerJoinController {
 
 	@Autowired
@@ -38,16 +38,23 @@ public class PerformerJoinController {
 		return "join/creationStep1";
 	}
 	
-	@RequestMapping("/newJoin/step2")
+	@RequestMapping("/newJoin/step2") // step1 -> step2
 	public String step2(
 			@ModelAttribute("joinForm") PerformerForm memRegReq,
 			BindingResult bindingResult) {		
 		System.out.println("command 객체: " + memRegReq);
 		
 		new PerformerJoinValidator().validate(memRegReq, bindingResult);
+		
 		if (bindingResult.hasErrors()) {
 			return "join/creationStep1";
 		}
+		
+		if (performerService.getPerformerInfoByEmail(memRegReq.getEmail()) != null) {
+			bindingResult.reject("sameEmailExist", new Object[] {}, null);
+			return "join/creationStep1";
+		}
+		
 		return "join/creationStep2";
 	}
 	
@@ -72,13 +79,8 @@ public class PerformerJoinController {
 				@ModelAttribute("joinForm") PerformerForm performerForm,
 				SessionStatus sessionStatus, Model model) {
 		performerService.joinNewPerformer(performerForm);
-		sessionStatus.setComplete();	// session 종료
-		model.addAttribute("login", performerForm); // login session에 추가
+		sessionStatus.setComplete();	// joinForm session 종료
 		return "join/creationDone";		// done view로 이동
 	}
-	
-	public void setPerformerService(PerformerService performerService) {
-		this.performerService = performerService;
-	}
-	
+
 }

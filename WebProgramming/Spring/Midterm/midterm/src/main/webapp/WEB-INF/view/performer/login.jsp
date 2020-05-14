@@ -9,16 +9,15 @@
 <title>로그인</title>
 </head>
 <body>
-<form:form modelAttribute="performer" action="login">
+<form:form modelAttribute="loginCommand" action="login">
 <br>
 
-<c:if test="${!empty message}">
-  <font><c:url value="${message}" /></font>
-</c:if>
+<form:errors />
 <br><br>
 
 <label for="email">아이디</label>: 
-<form:input path="email" value="${performer.email}"/>
+<form:input path="email" value="${loginCommand.email}"/>
+<form:errors path="email" />
 <br>
 
 <label for="password">암호</label>: 

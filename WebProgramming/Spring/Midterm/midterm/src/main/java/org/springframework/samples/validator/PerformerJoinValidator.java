@@ -15,8 +15,9 @@ public class PerformerJoinValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		PerformerForm regReq = (PerformerForm) target;
-		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty())
+		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) {
 			errors.rejectValue("email", "required");
+		}
 
 		// 필수 항목
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
@@ -25,15 +26,17 @@ public class PerformerJoinValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "required");
 		
 		String emailRegax = "^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}$";
-		if (!regReq.getEmail().matches(emailRegax)) {
+		if (!regReq.getEmail().equals("") && !regReq.getEmail().matches(emailRegax)) {
 			errors.rejectValue("email", "typeMismatch");
 		}
 		
 		if (regReq.hasPassword()) {
-			if (regReq.getPassword().length() < 5) // 암호 6글자 이상
+			if (regReq.getPassword().length() < 5) {// 암호 6글자 이상
 				errors.rejectValue("password", "shortPassword");
-			if (!regReq.isSamePasswordConfirmPassword())
+			}
+			if (!regReq.isSamePasswordConfirmPassword()) {
 				errors.rejectValue("confirmPassword", "notSame");
+			}
 		}
 		
 		String zipcode = regReq.getAddress().getZipcode();

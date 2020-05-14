@@ -6,24 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.samples.controller.PerformerForm;
+import org.springframework.samples.model.Address;
 import org.springframework.samples.model.PerformerInfo;
+import org.springframework.samples.model.PerformerType;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PerformerService {
 
-	private int nextMemberId = 1;
-	private Map<Integer, PerformerInfo> performerMap = new HashMap<Integer, PerformerInfo>();
+	private int nextMemberId = 0;
+	private Map<String, PerformerInfo> performerMap = new HashMap<String, PerformerInfo>();
 
 	public PerformerService() {
-
+		performerMap.put("p1", new PerformerInfo("p1", "도담", "dodami@dongduk.ac.kr", "123456", "010-1234-4567", new Address("한국", "서울", "01520"), PerformerType.Singer, "멍멍", "20", false));
+		nextMemberId = 2;
 	}
 
 	public List<PerformerInfo> getPerformers() {
 		return new ArrayList<PerformerInfo>(performerMap.values());
 	}
 
-	public PerformerInfo getPerformerInfo(int performerId) {
+	public PerformerInfo getPerformerInfo(String performerId) {
 		return performerMap.get(performerId);
 	}
 
@@ -35,13 +38,13 @@ public class PerformerService {
 		return null;
 	}
 
-	public void removePerformer(int performerId) {
+	public void removePerformer(String performerId) {
 		performerMap.remove(performerId);
 	}
 	
-	public int joinNewPerformer(PerformerForm performerForm) {
+	public String joinNewPerformer(PerformerForm performerForm) {
 		PerformerInfo pi = new PerformerInfo(
-							nextMemberId,
+							"p" + nextMemberId,
 							performerForm.getName(),
 							performerForm.getEmail(), 
 							performerForm.getPassword(),

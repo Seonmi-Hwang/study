@@ -2,15 +2,15 @@ package org.springframework.samples.controller;
 
 public class LoginCommand {
 
-	private String userId;
+	private String email;
 	private String password;
 
-	public String getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -21,4 +21,8 @@ public class LoginCommand {
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "LoginCommand [email=" + email + ", password=" + password + "]";
+	}
 }

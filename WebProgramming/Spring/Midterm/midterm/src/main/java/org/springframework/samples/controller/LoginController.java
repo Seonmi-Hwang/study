@@ -4,34 +4,43 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.model.PerformerInfo;
 import org.springframework.samples.service.PerformerService;
+import org.springframework.samples.validator.LoginCommandValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.util.WebUtils;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 @Controller
 public class LoginController { 
-
+	
 	@Autowired
-	private PerformerService performerService;
+	private Authenticator authenticator;
 
 	@RequestMapping("/performer/login")
 	public ModelAndView handleRequest(HttpServletRequest request,
-			@ModelAttribute("performer") PerformerForm performer, Model model) throws Exception {
+			@ModelAttribute("loginCommand") LoginCommand loginCommand,
+			BindingResult result) throws Exception {
 		
-			System.out.println("Login 객체 : " + performer);
-		
-//			new LoginValidator().validate(performer, bindingResult);
+			System.out.println("Login 객체 : " + loginCommand);
 			
-			PerformerInfo realPerformer = performerService.getPerformerInfoByEmail(performer.getEmail());
-			if (!realPerformer.matchPassword(performer.getPassword())) {
-				String errorMessage = "아이디(" + performer.getEmail() + ")와 암호가 일치하지 않습니다.";
-				return new ModelAndView("performer/login", "message", errorMessage);	// 검증 오류 발생 시 다시 login으로 이동
-			} else {
-				model.addAttribute("login", realPerformer);
-				return new ModelAndView("performer/performerDetail");		// detail
+			new LoginCommandValidator().validate(loginCommand, result);
+			
+			if (result.hasErrors()) {
+				return new ModelAndView("performer/login", "loginCommand", loginCommand);
 			}
+			
+			try {
+				authenticator.authenticate(loginCommand);
+				WebUtils.setSessionAttribute(request, "login", loginCommand);
+				return new ModelAndView("redirect:/index");	 // 검증 성공
+			} catch (AuthenticationException ex) { // 검증에 실패했을 경우
+				result.reject("notMatchPassword", new Object[] { loginCommand
+						.getEmail() }, null);
+				return new ModelAndView("performer/login", "loginCommand", loginCommand);
+			}
+
 	}
 }

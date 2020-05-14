@@ -32,23 +32,25 @@
 				<td>곡명</td>
 				<td>공연시간</td>
 			</tr>
-			<c:forEach var="performer" items="${performers}">
+			<c:forEach var="performer" items="${performers}" varStatus="status">
 				<tr>
-					<td>${performer.id}</td>
+					<td>${status.count}</td>
 					<td><a href="<c:url value="/performer/detail">
-									<c:param name="email" value="${performer.email}"/>
+									<c:param name="email" value="${performer.email}" />
 								</c:url>">${performer.email}</a></td>
 					<td>${performer.name}</td>
 					<td>${performer.type}</td>
 					<td>${performer.title}</td>
 					<td>${performer.time}</td>
 					<td><a href="<c:url value="/performer/delete">
-									<c:param name="email" value="${performer.email}"/>
+									<c:param name="email" value="${performer.email}" />
 								</c:url>">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<br>
+		
+		현재 세션 : <%= session.getAttribute("login") %>
 		
    		<a href="<c:url value="/newJoin/step1" />">참가 신청</a>
 	

@@ -15,14 +15,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, 
 			HttpServletResponse response, Object handler)
 			throws Exception {
-		PerformerForm performerForm = 
-			(PerformerForm) WebUtils.getSessionAttribute(request, "userSession");
-		if (performerForm == null) {
-			PerformerForm performer = new PerformerForm();
-			performer.setEmail((String)request.getParameter("email"));
+		LoginCommand loginCommand = 
+			(LoginCommand) WebUtils.getSessionAttribute(request, "login");
+		String email = (String)request.getParameter("email");
+		if (loginCommand == null || !loginCommand.getEmail().equals(email)) {
+			loginCommand = new LoginCommand();
+			loginCommand.setEmail(email);
 			
 			ModelAndView modelAndView = new ModelAndView("performer/login");
-			modelAndView.addObject("performer", performer);
+			modelAndView.addObject("loginCommand", loginCommand);
 			throw new ModelAndViewDefiningException(modelAndView);
 		}
 		else {

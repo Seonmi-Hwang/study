@@ -2,7 +2,7 @@ package org.springframework.samples.model;
 
 public class PerformerInfo {
 
-	private int id;
+	private String id;
 	private String name;
 	private Address address;
 	private String email;
@@ -16,7 +16,7 @@ public class PerformerInfo {
 	public PerformerInfo() {
 	}
 
-	public PerformerInfo(int id, String name, String email, 
+	public PerformerInfo(String id, String name, String email, 
 			String password, String phoneNumber, Address address,
 			PerformerType type, String title, String time, boolean first) {
 		this.id = id;
@@ -63,7 +63,7 @@ public class PerformerInfo {
 		this.first = first;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -87,7 +87,7 @@ public class PerformerInfo {
 		return password.equals(inputPassword);
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

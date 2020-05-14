@@ -23,7 +23,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/performer/detail"/>
-<!-- 			<mvc:mapping path="/performer/delete"/> -->
+ 			<mvc:mapping path="/performer/delete"/>
 			<bean class="org.springframework.samples.controller.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

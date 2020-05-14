@@ -7,10 +7,8 @@ import org.springframework.samples.model.PerformerInfo;
 import org.springframework.samples.service.PerformerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 public class PerformerController {
@@ -25,7 +23,7 @@ public class PerformerController {
 		return "index";
 	}
 
-	@RequestMapping("/performer/detail") // 쓸모없는 코드일 듯?
+	@RequestMapping("/performer/detail")
 	public String performerDetail(@RequestParam String email, Model model) {
 		PerformerInfo pi = performerService.getPerformerInfoByEmail(email);
 		if (pi == null) {
@@ -41,9 +39,8 @@ public class PerformerController {
 		if (pi == null) {
 			return "performer/performerNotFound";
 		}
-		System.out.println("id : " + pi.getId());
 		performerService.removePerformer(pi.getId());
-		return "index";
+		return "redirect:/index";
 	}
 
 	public void setMemberService(PerformerService memberService) {
