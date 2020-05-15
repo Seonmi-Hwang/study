@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원 상세 정보</title>
+<title>참가자 상세 정보</title>
 </head>
 <body>
 <ul>
@@ -14,6 +14,7 @@
 	<li>공연 종류 : ${performer.type}</li>
 	<li>곡명 : ${performer.title}</li>
 	<li>공연 시간 : ${performer.time}</li>
+	<li>희망 공연 요일 : ${performer.day} </li>
 	<li>첫 공연 여부 : ${performer.first}</li>
 </ul>
 

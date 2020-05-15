@@ -13,7 +13,16 @@ public class PerformerForm {
 	private PerformerType type;
 	private String title;
 	private String time;
+	private String day;
 	private boolean first;
+	
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
 	
 	public PerformerType getType() {
 		return type;
@@ -110,6 +119,6 @@ public class PerformerForm {
 	public String toString() {
 		return "PerformerForm [name=" + name + ", address=" + address + ", email=" + email + ", password="
 				+ password + ", confirmPassword=" + confirmPassword + ", phoneNumber=" + phoneNumber + ", type=" + type
-				+ ", title=" + title + ", time=" + time + ", first=" + first + "]";
+				+ ", title=" + title + ", time=" + time + ", day=" + day + ", first=" + first + "]";
 	}
 }

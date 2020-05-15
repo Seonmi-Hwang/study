@@ -29,6 +29,12 @@
 		<form:errors path="time" />
 		<br />
 
+		<label for="day" >희망 공연 요일</label>: 
+		<form:radiobutton path="day" value="월" label="월" />
+		<form:radiobutton path="day" value="수" label="수" />
+		<form:radiobutton path="day" value="금" label="금" />
+		<form:errors path="day"/><br/>
+
 		<label for="first"> 
 		첫 공연?
 		<form:checkbox path="first" />

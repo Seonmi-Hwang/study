@@ -28,11 +28,11 @@ public class PerformerJoinController {
 	
 	@ModelAttribute("joinForm") 			// request handler methods 보다 먼저 호출됨
 	public PerformerForm formBacking(HttpServletRequest request) {
-		PerformerForm memRegReq = new PerformerForm();
+		PerformerForm performerForm = new PerformerForm();
 		Address address = new Address("", "서울", "");		// Address 객체 생성 및 초기화
-		memRegReq.setAddress(address);
-		memRegReq.setTime("20");
-		return memRegReq;
+		performerForm.setAddress(address);
+		performerForm.setTime("20");
+		return performerForm;
 	}
 	
 	@RequestMapping("/newJoin/step1")
@@ -42,13 +42,13 @@ public class PerformerJoinController {
 	
 	@RequestMapping("/newJoin/step2") // step1 -> step2
 	public String step2(
-			@ModelAttribute("joinForm") PerformerForm memRegReq,
+			@ModelAttribute("joinForm") PerformerForm performerForm,
 			BindingResult bindingResult) {		
-		System.out.println("command 객체: " + memRegReq);
+		System.out.println("command 객체: " + performerForm);
 		
-		new PerformerJoinValidator().validate(memRegReq, bindingResult);
+		new PerformerJoinValidator().validate(performerForm, bindingResult);
 		
-		if (performerService.getPerformerInfoByEmail(memRegReq.getEmail()) != null) {
+		if (performerService.getPerformerInfoByEmail(performerForm.getEmail()) != null) {
 			bindingResult.reject("sameEmailExist", new Object[] {}, null);
 			return "join/creationStep1";
 		}
@@ -67,10 +67,10 @@ public class PerformerJoinController {
 
 	@PostMapping("/newJoin/step3")		// step2 -> step3 이동
 	public String step3(
-				@ModelAttribute("joinForm") PerformerForm memRegReq,
+				@ModelAttribute("joinForm") PerformerForm performerForm,
 				BindingResult result) {
 		
-		new PerformanceValidator().validate(memRegReq, result);
+		new PerformanceValidator().validate(performerForm, result);
 		if (result.hasErrors())
 			return "join/creationStep2";	// 검증 오류 발생 시 step2 view로 이동
 		return "join/creationStep3";		// step3 view로 이동

@@ -11,6 +11,7 @@ public class PerformerInfo {
 	private PerformerType type;
 	private String title;
 	private String time;
+	private String day;
 	private boolean first;
 	
 	public PerformerInfo() {
@@ -18,7 +19,7 @@ public class PerformerInfo {
 
 	public PerformerInfo(String id, String name, String email, 
 			String password, String phoneNumber, Address address,
-			PerformerType type, String title, String time, boolean first) {
+			PerformerType type, String title, String day, String time, boolean first) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -27,10 +28,19 @@ public class PerformerInfo {
 		this.address = address;
 		this.type = type;
 		this.title = title;
+		this.day = day;
 		this.time = time;
 		this.first = first;
 	}
 
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+	
 	public PerformerType getType() {
 		return type;
 	}

@@ -18,7 +18,7 @@ public class PerformerService {
 	private Map<String, PerformerInfo> performerMap = new HashMap<String, PerformerInfo>();
 
 	public PerformerService() {
-		performerMap.put("p1", new PerformerInfo("p1", "도담", "dodami@dongduk.ac.kr", "123456", "010-1234-4567", new Address("한국", "서울", "01520"), PerformerType.Singer, "멍멍", "20", false));
+		performerMap.put("p1", new PerformerInfo("p1", "도담", "dodami@dongduk.ac.kr", "123456", "010-1234-4567", new Address("한국", "서울", "01520"), PerformerType.Singer, "멍멍", "금", "20", false));
 		nextMemberId = 2;
 	}
 
@@ -52,6 +52,7 @@ public class PerformerService {
 							performerForm.getAddress(),
 							performerForm.getType(),
 							performerForm.getTitle(),
+							performerForm.getDay(),
 							performerForm.getTime(),
 							performerForm.isFirst());
 		nextMemberId++;

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>이벤트 생성</title>
+<title>공연 참가 신청</title>
 </head>
 <body>
 <h2>공연 참가 신청 - Step3</h2>
@@ -22,6 +22,7 @@
 <label>공연 종류</label>: ${joinForm.type} <br>
 <label>곡명</label>: ${joinForm.title} <br>
 <label>공연 시간</label>: ${joinForm.time} <br>
+<label>희망 공연 요일</label>: ${joinForm.day} <br>
 <label>첫 공연 여부</label>: ${joinForm.first} <br>
 <br>
 
