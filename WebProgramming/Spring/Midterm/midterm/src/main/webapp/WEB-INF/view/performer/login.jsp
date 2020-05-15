@@ -10,7 +10,6 @@
 </head>
 <body>
 <form:form modelAttribute="loginCommand" action="login">
-<br>
 
 <form:errors />
 <br><br>

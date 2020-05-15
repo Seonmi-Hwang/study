@@ -25,12 +25,12 @@
 		
 		<table border="1">
 			<tr>
-				<td>순번</td>
-				<td>ID</td>
-				<td>이름</td>
-				<td>종류</td>
-				<td>곡명</td>
-				<td>공연시간</td>
+				<td><b>순번</b></td>
+				<td><b>ID</b></td>
+				<td><b>이름</b></td>
+				<td><b>종류</b></td>
+				<td><b>곡명</b></td>
+				<td><b>공연시간</b></td>
 			</tr>
 			<c:forEach var="performer" items="${performers}" varStatus="status">
 				<tr>
@@ -50,7 +50,7 @@
 		</table>
 		<br>
 		
-		현재 세션 : <%= session.getAttribute("login") %>
+	<!-- 현재 세션 : <%= session.getAttribute("login") %> <br> -->
 		
    		<a href="<c:url value="/newJoin/step1" />">참가 신청</a>
 	

@@ -34,7 +34,7 @@ public class PerformerController {
 	}
 	
 	@RequestMapping("/performer/delete")
-	public String performerDelete(@RequestParam String email, Model model) {
+	public String performerDelete(@RequestParam String email) {
 		PerformerInfo pi = performerService.getPerformerInfoByEmail(email);
 		if (pi == null) {
 			return "performer/performerNotFound";

@@ -31,7 +31,7 @@ public class PerformerJoinValidator implements Validator {
 		}
 		
 		if (regReq.hasPassword()) {
-			if (regReq.getPassword().length() < 5) {// 암호 6글자 이상
+			if (regReq.getPassword().trim().length() < 5) {// 암호 6글자 이상 (공백제외)
 				errors.rejectValue("password", "shortPassword");
 			}
 			if (!regReq.isSamePasswordConfirmPassword()) {
@@ -40,7 +40,7 @@ public class PerformerJoinValidator implements Validator {
 		}
 		
 		String zipcode = regReq.getAddress().getZipcode();
-		if (!zipcode.equals("") && !zipcode.matches("^\\d{5}$")) {
+		if (!zipcode.matches("^\\d{5}$")) { // !zipcode.equals("") && 
 			errors.pushNestedPath("address");
 			try {
 				errors.rejectValue("zipcode", "typeMismatch");

@@ -21,7 +21,7 @@ public class PerformanceValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "time", "required");
 		
 		String time = regReq.getTime();
-		if (time != null && Integer.parseInt(time) > 30) {
+		if (!time.equals("") && Integer.parseInt(time) > 30) {
 			errors.rejectValue("time", "tooLongTime");
 		}
 

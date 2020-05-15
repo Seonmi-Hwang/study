@@ -1,8 +1,5 @@
 package org.springframework.samples.controller;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
