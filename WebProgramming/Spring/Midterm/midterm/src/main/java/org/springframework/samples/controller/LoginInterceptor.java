@@ -21,13 +21,24 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		LoginCommand loginCommand = 
 			(LoginCommand) WebUtils.getSessionAttribute(request, "login"); // get login session
+		
 		String email = (String)request.getParameter("email"); // 클릭한 email
+		String url = request.getRequestURL().toString();
+		String query = request.getQueryString();
+		
+		ModelAndView modelAndView = new ModelAndView("performer/login"); // login form 
+		if (query != null) {
+			modelAndView.addObject("loginForwardAction", url+"?"+query);
+		} else {
+			modelAndView.addObject("loginForwardAction", url);
+		}
+		
 		if (loginCommand == null || !loginCommand.getEmail().equals(email)) { // session이 없거나 session에 있는 email이 아닐 경우
 			loginCommand = new LoginCommand(); 
 			loginCommand.setEmail(email);
 			
-			ModelAndView modelAndView = new ModelAndView("performer/login"); // login form 
 			modelAndView.addObject("loginCommand", loginCommand);
+			
 			throw new ModelAndViewDefiningException(modelAndView);
 		}
 		else {

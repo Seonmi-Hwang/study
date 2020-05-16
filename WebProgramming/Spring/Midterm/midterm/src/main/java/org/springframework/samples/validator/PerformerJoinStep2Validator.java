@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class PerformanceValidator implements Validator {
+public class PerformerJoinStep2Validator implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return PerformerForm.class.isAssignableFrom(clazz);
@@ -22,8 +22,12 @@ public class PerformanceValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "day", "required");
 		
 		String time = regReq.getTime();
-		if (!time.equals("") && Integer.parseInt(time) > 30) {
-			errors.rejectValue("time", "tooLongTime");
+		try {
+			if (!time.equals("") && Integer.parseInt(time) > 30) {
+				errors.rejectValue("time", "tooLongTime");
+			}
+		} catch (NumberFormatException ex) {
+			errors.rejectValue("time", "isNotNumber");
 		}
 
 	}

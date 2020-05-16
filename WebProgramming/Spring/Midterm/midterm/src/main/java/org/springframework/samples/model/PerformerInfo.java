@@ -93,10 +93,6 @@ public class PerformerInfo {
 		return address;
 	}
 
-	public boolean matchPassword(String inputPassword) {
-		return password.equals(inputPassword);
-	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -115,5 +111,9 @@ public class PerformerInfo {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public boolean matchPassword(String inputPassword) {
+		return password.equals(inputPassword);
 	}
 }

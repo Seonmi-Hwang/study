@@ -11,6 +11,11 @@
 <body>
 <form:form modelAttribute="loginCommand" action="login">
 
+    <c:if test="${!empty loginForwardAction}">
+      <input type="hidden" name="forwardAction"
+        value='<c:url value="${loginForwardAction}"/>' />
+    </c:if>
+
 <form:errors />
 <br><br>
 

@@ -42,9 +42,4 @@ public class PerformerController {
 		performerService.removePerformer(pi.getId());
 		return "redirect:/index";
 	}
-
-	public void setMemberService(PerformerService memberService) {
-		this.performerService = memberService;
-	}
-
 }

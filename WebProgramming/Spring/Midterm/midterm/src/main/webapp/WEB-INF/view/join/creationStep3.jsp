@@ -13,17 +13,17 @@
 
 다음 정보로 신청하시겠습니까?<br /><br />
 
-<form:form modelAttribute="joinForm" action="done">
+<form:form modelAttribute="performerForm" action="done">
 
-<label>ID</label>: ${joinForm.email} <br>
-<label>이름</label>: ${joinForm.name} <br>
-<label>전화번호</label>: ${joinForm.phoneNumber} <br>
-<label>주소</label>: ${joinForm.address.street} ${joinForm.address.city} (우편번호: ${joinForm.address.zipcode}) <br>
-<label>공연 종류</label>: ${joinForm.type} <br>
-<label>곡명</label>: ${joinForm.title} <br>
-<label>공연 시간</label>: ${joinForm.time} <br>
-<label>희망 공연 요일</label>: ${joinForm.day} <br>
-<label>첫 공연 여부</label>: ${joinForm.first} <br>
+<label>ID</label>: ${performerForm.email} <br>
+<label>이름</label>: ${performerForm.name} <br>
+<label>전화번호</label>: ${performerForm.phoneNumber} <br>
+<label>주소</label>: ${performerForm.address.street} ${performerForm.address.city} (우편번호: ${performerForm.address.zipcode}) <br>
+<label>공연 종류</label>: ${performerForm.type} <br>
+<label>곡명</label>: ${performerForm.title} <br>
+<label>공연 시간</label>: ${performerForm.time} <br>
+<label>희망 공연 요일</label>: ${performerForm.day} <br>
+<label>첫 공연 여부</label>: ${performerForm.first} <br>
 <br>
 
 <a href="step2">[이전 단계로]</a>

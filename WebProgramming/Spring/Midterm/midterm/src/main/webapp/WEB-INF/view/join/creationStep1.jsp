@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>공연 참가 신청 - Step1</h2>
-	<form:form modelAttribute="joinForm" action="step2">
+	<form:form modelAttribute="performerForm" action="step2">
 		<label for="email">ID(이메일 주소)</label>: 
 		<form:input path="email" />
 		<form:errors path="email" />

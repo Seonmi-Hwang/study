@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class PerformerJoinValidator implements Validator {
+public class PerformerJoinStep1Validator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {

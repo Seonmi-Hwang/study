@@ -6,6 +6,7 @@ import org.springframework.samples.validator.LoginCommandValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 import org.springframework.validation.BindingResult;
@@ -23,24 +24,36 @@ public class LoginController {
 	@RequestMapping("/performer/login")
 	public ModelAndView handleRequest(HttpServletRequest request,
 			@ModelAttribute("loginCommand") LoginCommand loginCommand,
+			@RequestParam(value="forwardAction", required=false) String forwardAction,
 			BindingResult result) throws Exception {
 		
 			System.out.println("Login 객체 : " + loginCommand);
 			
 			new LoginCommandValidator().validate(loginCommand, result); // 검증
 			
+			ModelAndView mav = new ModelAndView();
+			
 			if (result.hasErrors()) {
-				return new ModelAndView("performer/login", "loginCommand", loginCommand);
+				mav.addObject("loginForwardAction", forwardAction);
+				mav.addObject("loginCommand", loginCommand);
+				mav.setViewName("performer/login");
+				return mav;
 			}
 			
 			try {
 				authenticator.authenticate(loginCommand); // email과 password가 맞는지 검증
 				WebUtils.setSessionAttribute(request, "login", loginCommand);
-				return new ModelAndView("redirect:/index");	 // 검증 성공 시 
+				if (forwardAction != null) {
+					return new ModelAndView("redirect:" + forwardAction);	 // 검증 성공 시 
+				} else {
+					return new ModelAndView("redirect:/index");
+				}
 			} catch (AuthenticationException ex) { // 검증에 실패했을 경우
-				result.reject("notMatchPassword", new Object[] { loginCommand
-						.getEmail() }, null);
-				return new ModelAndView("performer/login", "loginCommand", loginCommand);
+				result.reject("notMatchPassword", new Object[] { loginCommand.getEmail() }, null);
+				mav.addObject("loginForwardAction", forwardAction);
+				mav.addObject("loginCommand", loginCommand);
+				mav.setViewName("performer/login");
+				return mav;
 			}
 
 	}

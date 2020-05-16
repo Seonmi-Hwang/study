@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>공연 참가 신청 - Step2</h2>
-	<form:form modelAttribute="joinForm" action="step3">
+	<form:form modelAttribute="performerForm" action="step3">
 		<label for="type">공연 종류</label>: 
 		<form:select path="type" >
 			<form:options items="<%= PerformerType.values() %>"/>

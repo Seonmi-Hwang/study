@@ -31,8 +31,7 @@ public class PerformerForm {
 	public void setType(PerformerType type) {
 		this.type = type;
 	}
-	
-	
+		
 	public String getTitle() {
 		return title;
 	}
