@@ -27,16 +27,16 @@ public class LoginController {
 			@RequestParam(value="forwardAction", required=false) String forwardAction,
 			BindingResult result) throws Exception {
 		
-			System.out.println("Login 객체 : " + loginCommand);
+			System.out.println("Login 객체 : " + loginCommand); // console 출력
 			
 			new LoginCommandValidator().validate(loginCommand, result); // 검증
 			
 			ModelAndView mav = new ModelAndView();
 			
-			if (result.hasErrors()) {
-				mav.addObject("loginForwardAction", forwardAction);
+			if (result.hasErrors()) { // 검증에 실패했을 경우
+				mav.addObject("loginForwardAction", forwardAction); 
 				mav.addObject("loginCommand", loginCommand);
-				mav.setViewName("performer/login");
+				mav.setViewName("performer/login"); // login form 이동
 				return mav;
 			}
 			
@@ -49,10 +49,10 @@ public class LoginController {
 					return new ModelAndView("redirect:/index");
 				}
 			} catch (AuthenticationException ex) { // 검증에 실패했을 경우
-				result.reject("notMatchPassword", new Object[] { loginCommand.getEmail() }, null);
+				result.reject("notMatchPassword", new Object[] { loginCommand.getEmail() }, null); // error message
 				mav.addObject("loginForwardAction", forwardAction);
 				mav.addObject("loginCommand", loginCommand);
-				mav.setViewName("performer/login");
+				mav.setViewName("performer/login"); // login form 이동
 				return mav;
 			}
 

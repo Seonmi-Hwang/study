@@ -50,7 +50,7 @@
 		</table>
 		<br>
 		
-	<!-- 현재 세션 : <%= session.getAttribute("login") %> <br> -->
+	<!--  현재 세션 : <%= session.getAttribute("login") %> <br><br> -->
 		
    		<a href="<c:url value="/newJoin/step1" />">참가 신청</a>
 	

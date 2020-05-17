@@ -12,9 +12,9 @@ public class PerformerForm {
 	private String phoneNumber;
 	private PerformerType type;
 	private String title;
-	private String time;
-	private String day;
-	private boolean first;
+	private String time; // 공연 시간
+	private String day; // 희망 공연 요일
+	private boolean first; // 첫 공연 여부
 	
 	public String getDay() {
 		return day;

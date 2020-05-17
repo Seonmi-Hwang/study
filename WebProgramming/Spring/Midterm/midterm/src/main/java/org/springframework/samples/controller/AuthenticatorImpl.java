@@ -14,7 +14,7 @@ public class AuthenticatorImpl implements Authenticator {
 	@Override
 	public void authenticate(LoginCommand loginCommand) {
 		String email = loginCommand.getEmail();
-		
+		// login한 email과 password가 맞는지 검증
 		PerformerInfo realPerformer = performerService.getPerformerInfoByEmail(email);
 		if (!realPerformer.matchPassword(loginCommand.getPassword())) {
 			throw new AuthenticationException("not match password" + email);

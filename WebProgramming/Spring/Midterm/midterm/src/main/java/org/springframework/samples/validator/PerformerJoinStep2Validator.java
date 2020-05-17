@@ -15,7 +15,7 @@ public class PerformerJoinStep2Validator implements Validator {
 	public void validate(Object target, Errors errors) {
 		PerformerForm regReq = (PerformerForm) target;
 
-		// 필수 항목
+		// 필수 입력 항목
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "type", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "time", "required");
@@ -24,10 +24,10 @@ public class PerformerJoinStep2Validator implements Validator {
 		String time = regReq.getTime();
 		try {
 			if (!time.equals("") && Integer.parseInt(time) > 30) {
-				errors.rejectValue("time", "tooLongTime");
+				errors.rejectValue("time", "tooLongTime"); // 공연 시간 30분 제한 검증
 			}
-		} catch (NumberFormatException ex) {
-			errors.rejectValue("time", "isNotNumber");
+		} catch (NumberFormatException ex) { // error 처리
+			errors.rejectValue("time", "isNotNumber"); // 공연 시간을 정수로 입력했는지 검증
 		}
 
 	}

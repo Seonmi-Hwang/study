@@ -39,7 +39,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			modelAndView.addObject("loginCommand", loginCommand);
 			
-			throw new ModelAndViewDefiningException(modelAndView);
+			throw new ModelAndViewDefiningException(modelAndView); // login form 이동
 		}
 		else {
 			return true; // PerformerController 실행
