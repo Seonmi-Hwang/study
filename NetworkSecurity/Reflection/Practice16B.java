@@ -4,14 +4,12 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.Scanner;
 
-public class Practice16 {
+public class Practice16B {
 
 	public static void main(String[] args) throws ClassNotFoundException {
-		Scanner scan = new Scanner(System.in);
-		
-		Class<?> cls = Class.forName(scan.next());
+
+		Class<?> cls = Class.forName(args[0]);
 		Method mlist[] = cls.getDeclaredMethods();
 		
 		
