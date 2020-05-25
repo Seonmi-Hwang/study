@@ -1,11 +1,11 @@
-package practice16;
+
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
-public class Practice16A {
+public class Practice17B {
 
 	public static void main(String[] args) throws ClassNotFoundException, 
 		NoSuchMethodException, SecurityException, InstantiationException, 

@@ -1,11 +1,11 @@
-package practice16;
+
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public class Practice16B {
+public class Practice16 {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 
