@@ -13,9 +13,6 @@ import java.security.PublicKey;
 
 public class MyKeyPair {
 	private static final String keyAlgorithm = "RSA";
-//	private static final String publicFilename = "publicFilename.txt";
-//	private static final String privateFilename = "privateFilename.txt";
-//	private static final String keyFilename = "keyFilename.txt";
 	
 	private KeyPairGenerator keyGen;
 	private KeyPair pair;
